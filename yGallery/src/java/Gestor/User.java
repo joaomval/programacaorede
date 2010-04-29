@@ -7,7 +7,6 @@ package Gestor;
 import BaseDados.Teste_Acesso_BD;
 import Sistema.Pessoa;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.util.Hashtable;
 import java.util.logging.Level;
@@ -41,7 +40,7 @@ public class User extends HttpServlet {
         HttpSession session = request.getSession();
         if (verificaLogin(request, response)) {
             Pessoa p = new Pessoa();
-            String pessoa = p.devolvePessoaPorEmail(request.getParameter("var_email"), request, response);
+            String pessoa = p.devolvePessoaPorEmail(request, response, request.getParameter("var_email"));
             session.setAttribute("pessoa", pessoa);
             response.sendRedirect("/yGallery/index.jsp");
         } else {
@@ -65,7 +64,11 @@ public class User extends HttpServlet {
             throws ServletException, IOException {
         String accao = (String) request.getParameter("accao");
         if (accao.equals(User.INSERIR_PESSOA)) {
-            inserirPessoa(request, response);
+            try {
+                inserirPessoa(request, response);
+            } catch (Exception ex) {
+                Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else if (accao.equals(User.FAZ_LOGIN)) {
             try {
                 fazLogin(request, response);
@@ -123,8 +126,14 @@ public class User extends HttpServlet {
         return false;
 
     }
-
-    private void inserirPessoa(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void retornaDadosRegisto(HttpServletRequest request, HttpServletResponse response, Hashtable params){
+        request.setAttribute("email", params.get("var_email"));
+        request.setAttribute("nome", params.get("var_nome"));
+        request.setAttribute("nascimento", params.get("var_datadenascimento"));
+        request.setAttribute("morada", params.get("var_morada"));
+        request.setAttribute("postal", params.get("var_codigopostal"));
+    }
+    private void inserirPessoa(HttpServletRequest request, HttpServletResponse response) throws IOException, Exception {
         HttpSession session = request.getSession();
         Hashtable params = new Hashtable();
         params.put("var_email", request.getParameter("var_email"));
@@ -148,33 +157,17 @@ public class User extends HttpServlet {
 
             } else {
                 session.setAttribute("emailExiste", "emailExiste");
+                retornaDadosRegisto(request, response, params);
                 response.sendRedirect("/yGallery/Registo.jsp");
             }
 
         }
     }
 
-    private boolean verificaSeMailExiste(HttpServletRequest request, HttpServletResponse response, String email) {
-        Teste_Acesso_BD bd = new Teste_Acesso_BD();
-        bd.carregaDriverEAbreConnection();
-        bd.abreStatement();
-        Hashtable params = new Hashtable();
-        params.put("var_email", request.getParameter("var_email"));
-        String qryName = new String("devolve_pessoa_por_email");
-        ResultSet rs;
-        try {
-            rs = bd.executeSelect(qryName, params);
-            while (rs.next()) {
-                String email2 = rs.getString("eMail");
-                if (email2.equals(request.getParameter("var_email"))) {
-                    return true;
-                }
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        bd.fechaStatement();
-        bd.fechaConnection();
+    private boolean verificaSeMailExiste(HttpServletRequest request, HttpServletResponse response, String email) throws Exception {
+        if(new Pessoa().devolvePessoaPorEmail(request, response, email)==null)
+            return true;
         return false;
+
     }
 }
