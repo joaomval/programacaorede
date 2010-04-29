@@ -35,7 +35,7 @@ public class Pessoa {
         this.password = password;
     }
 
-    public String devolvePessoaPorEmail(String email, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String devolvePessoaPorEmail(HttpServletRequest request, HttpServletResponse response, String email) throws Exception {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
@@ -43,14 +43,19 @@ public class Pessoa {
         params.put("var_email", request.getParameter("var_email"));
         String qryName = new String("devolve_pessoa_por_email");
         ResultSet rs;
-        rs = bd.executeSelect(qryName, params);
         String pessoa = null;
-        while (rs.next()) {
-            pessoa = rs.getString("nome");
+        try {
+            rs = bd.executeSelect(qryName, params);
+            while (rs.next()) {
+                pessoa = rs.getString("nome");
+                System.out.println("PESSOA@@@@@@@: " + pessoa);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            bd.fechaStatement();
+            bd.fechaConnection();
         }
-        bd.fechaStatement();
-        bd.fechaConnection();
-        System.out.println(rs);
         return pessoa;
     }
 
