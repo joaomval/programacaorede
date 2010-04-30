@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Pessoa {
 
-    public String devolvePessoaPorEmail(HttpServletRequest request, HttpServletResponse response, String email) throws Exception {
+    public String devolvePessoaPorEmail(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
