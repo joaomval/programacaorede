@@ -53,4 +53,18 @@ public class Pessoa {
         bd.fechaStatement();
         bd.fechaConnection();
     }
+
+    public void apaga( final Hashtable<String, Object> params) {
+        Teste_Acesso_BD bd = new Teste_Acesso_BD();
+        bd.carregaDriverEAbreConnection();
+        bd.abreStatement();
+        String qryName = new String("apaga_pessoa");
+        try {
+            bd.executaUpdate(qryName, params);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        bd.fechaStatement();
+        bd.fechaConnection();
+    }
 }

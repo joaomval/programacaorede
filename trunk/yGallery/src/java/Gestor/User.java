@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.hibernate.validator.constraints.Email;
 
 /**
  *
@@ -163,6 +164,26 @@ public class User extends HttpServlet {
 
         }
     }
+
+     private void apagaPessoa(HttpServletRequest request, HttpServletResponse response) throws IOException, Exception {
+        HttpSession session = request.getSession();
+        Hashtable params = new Hashtable();
+        params.put("var_email", request.getParameter("var_email"));
+
+
+            if (verificaSeMailExiste(request, response, request.getParameter("var_email"))) {
+
+                params.put("var_email",request.getParameter("var_email"));
+
+
+            } else {
+                session.setAttribute("erro", "e-mail não existe");
+                response.sendRedirect("/yGallery/erro.jsp");
+            }
+
+
+    }
+
 
     private boolean verificaSeMailExiste(HttpServletRequest request, HttpServletResponse response, String email) throws Exception {
         if(new Pessoa().devolvePessoaPorEmail(request, response, email)==null)
