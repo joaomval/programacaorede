@@ -41,7 +41,7 @@ public class User extends HttpServlet {
         HttpSession session = request.getSession();
         if (verificaLogin(request, response)) {
             Pessoa p = new Pessoa();
-            String pessoa = p.devolvePessoaPorEmail(request, response, request.getParameter("var_email"));
+            String pessoa = p.devolvePessoaPorEmail(request, response);
             session.setAttribute("pessoa", pessoa);
             response.sendRedirect("/yGallery/index.jsp");
         } else {
@@ -127,13 +127,15 @@ public class User extends HttpServlet {
         return false;
 
     }
-    private void retornaDadosRegisto(HttpServletRequest request, HttpServletResponse response, Hashtable params){
+
+    private void retornaDadosRegisto(HttpServletRequest request, HttpServletResponse response, Hashtable params) {
         request.setAttribute("email", params.get("var_email"));
         request.setAttribute("nome", params.get("var_nome"));
         request.setAttribute("nascimento", params.get("var_datadenascimento"));
         request.setAttribute("morada", params.get("var_morada"));
         request.setAttribute("postal", params.get("var_codigopostal"));
     }
+
     private void inserirPessoa(HttpServletRequest request, HttpServletResponse response) throws IOException, Exception {
         HttpSession session = request.getSession();
         Hashtable params = new Hashtable();
@@ -148,7 +150,7 @@ public class User extends HttpServlet {
             session.setAttribute("passwordDif", "diferente");
             response.sendRedirect("/yGallery/Registo.jsp");
         } else {
-            if (verificaSeMailExiste(request, response, request.getParameter("var_email"))) {
+            if (verificaSeMailExiste(request, response)) {
                 params.put("var_password", password);
 
                 new Pessoa().insere(params);
@@ -165,29 +167,29 @@ public class User extends HttpServlet {
         }
     }
 
-     private void apagaPessoa(HttpServletRequest request, HttpServletResponse response) throws IOException, Exception {
+    private void apagaPessoa(HttpServletRequest request, HttpServletResponse response) throws IOException, Exception {
         HttpSession session = request.getSession();
         Hashtable params = new Hashtable();
         params.put("var_email", request.getParameter("var_email"));
 
 
-            if (verificaSeMailExiste(request, response, request.getParameter("var_email"))) {
+        if (verificaSeMailExiste(request, response)) {
 
-                params.put("var_email",request.getParameter("var_email"));
+            params.put("var_email", request.getParameter("var_email"));
 
 
-            } else {
-                session.setAttribute("erro", "e-mail não existe");
-                response.sendRedirect("/yGallery/erro.jsp");
-            }
+        } else {
+            session.setAttribute("erro", "e-mail não existe");
+            response.sendRedirect("/yGallery/erro.jsp");
+        }
 
 
     }
 
-
-    private boolean verificaSeMailExiste(HttpServletRequest request, HttpServletResponse response, String email) throws Exception {
-        if(new Pessoa().devolvePessoaPorEmail(request, response, email)==null)
+    private boolean verificaSeMailExiste(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        if (new Pessoa().devolvePessoaPorEmail(request, response) == null) {
             return true;
+        }
         return false;
 
     }

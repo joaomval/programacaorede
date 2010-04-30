@@ -1,4 +1,3 @@
-
 package Sistema;
 
 import BaseDados.Teste_Acesso_BD;
@@ -7,10 +6,9 @@ import java.util.Hashtable;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 public class Artista {
 
-     public String devolveArtistaPorId(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String devolveArtistaPorId(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
@@ -34,7 +32,7 @@ public class Artista {
         return artista;
     }
 
-       public void insere(final Hashtable<String, Object> params) {
+    public void insere(final Hashtable<String, Object> params) {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
@@ -48,7 +46,7 @@ public class Artista {
         bd.fechaConnection();
     }
 
-       public void apaga( final Hashtable<String, Object> params) {
+    public void apaga(final Hashtable<String, Object> params) {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
@@ -61,5 +59,4 @@ public class Artista {
         bd.fechaStatement();
         bd.fechaConnection();
     }
-
 }
