@@ -11,23 +11,22 @@ import java.util.Hashtable;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+public class Evento {
 
-public class Pessoa {
-
-    public String devolvePessoaPorEmail(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String devolveEventoPorId(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
         Hashtable params = new Hashtable();
-        params.put("var_email", request.getParameter("var_email"));
-        String qryName = new String("devolve_pessoa_por_email");
+        params.put("var_id", request.getParameter("var_id"));
+        String qryName = new String("devolve_evento_id");
         ResultSet rs;
-        String pessoa = null;
+        String evento = null;
         try {
             rs = bd.executeSelect(qryName, params);
             while (rs.next()) {
-                pessoa = rs.getString("nome");
-                System.out.println("PESSOA@@@@@@@: " + pessoa);
+                evento = rs.getString("nome");
+                System.out.println("EVENTO@@@@@@@: " + evento);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -35,14 +34,14 @@ public class Pessoa {
             bd.fechaStatement();
             bd.fechaConnection();
         }
-        return pessoa;
+        return evento;
     }
 
     public void insere(final Hashtable<String, Object> params) {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
-        String qryName = new String("query2");
+        String qryName = new String("insere_evento");
         try {
             bd.executaUpdate(qryName, params);
         } catch (Exception ex) {
@@ -56,7 +55,7 @@ public class Pessoa {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
-        String qryName = new String("apaga_pessoa");
+        String qryName = new String("apaga_evento");
         try {
             bd.executaUpdate(qryName, params);
         } catch (Exception ex) {
@@ -72,7 +71,7 @@ public class Pessoa {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
-        String qryName = new String("altera_pessoa");
+        String qryName = new String("altera_evento");
         try {
             bd.executaUpdate(qryName, params);
         } catch (Exception ex) {
