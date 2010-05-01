@@ -61,10 +61,10 @@ public class Artista {
         bd.fechaConnection();
     }
 
-     public static void altera(final Hashtable<String, Object> params)
-            throws SQLException{
+    public static void altera(final Hashtable<String, Object> params)
+            throws SQLException {
 
-         Teste_Acesso_BD bd = new Teste_Acesso_BD();
+        Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
         String qryName = new String("altera_artista");
@@ -77,5 +77,4 @@ public class Artista {
         bd.fechaConnection();
 
     }
-
 }

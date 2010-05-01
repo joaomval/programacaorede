@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Sistema;
 
 import BaseDados.Teste_Acesso_BD;
@@ -52,7 +51,7 @@ public class Administrador {
         bd.fechaConnection();
     }
 
-    public void apaga( final Hashtable<String, Object> params) {
+    public void apaga(final Hashtable<String, Object> params) {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
@@ -66,10 +65,10 @@ public class Administrador {
         bd.fechaConnection();
     }
 
-      public static void altera(final Hashtable<String, Object> params)
-            throws SQLException{
+    public static void altera(final Hashtable<String, Object> params)
+            throws SQLException {
 
-         Teste_Acesso_BD bd = new Teste_Acesso_BD();
+        Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
         String qryName = new String("altera_administrador");
@@ -82,5 +81,4 @@ public class Administrador {
         bd.fechaConnection();
 
     }
-
 }
