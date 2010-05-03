@@ -10,7 +10,7 @@
         <div id="container">
             <div id="header" title="yourGallery">
                 <h1>
-		  Sitename
+		  YourGallery
                 </h1>
                 <h2><img src="imagens/yourgallery.png"></h2>
             </div>
@@ -19,7 +19,7 @@
                 <% if (session.getAttribute("pessoa") == null) {%>
                 <table width="100%" border="0">
                     <tr>
-                    <form method="post" action="/yGallery/User?accao=faz_login">
+                    <form method="post" action="User?accao=faz_login">
                         <p><input type="text" value="email" name="var_email" size="20"> <input type="password" value="password" name="var_password" size="20">
                             <INPUT TYPE="SUBMIT" VALUE="login"></p>
                     </form>
@@ -40,6 +40,8 @@
                     <li><a href="#">Contacto</a></li>
                     <% if (session.getAttribute("pessoa") == null) {%>
                     <li><a href="/yGallery/Registo.jsp">Registar</a></li>
+                    <% }else{ %>
+                    <li><a href="/yGallery/Perfil.jsp">Perfil</a></li>
                     <% } %>
                 </ul>
             </div>
