@@ -14,7 +14,31 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Pessoa {
 
-    public String devolvePessoaPorEmail(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public static String devolveIdPorEmail(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        Teste_Acesso_BD bd = new Teste_Acesso_BD();
+        bd.carregaDriverEAbreConnection();
+        bd.abreStatement();
+        Hashtable params = new Hashtable();
+        params.put("var_email", request.getParameter("var_email"));
+        String qryName = new String("devolve_pessoa_por_email");
+        ResultSet rs;
+        String pessoa = null;
+        try {
+            rs = bd.executeSelect(qryName, params);
+            while (rs.next()) {
+                pessoa = rs.getString("idPessoa");
+                System.out.println("PESSOA@@@@@@@: " + pessoa);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            bd.fechaStatement();
+            bd.fechaConnection();
+        }
+        return pessoa;
+    }
+    
+    public static String devolvePessoaPorEmail(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
@@ -38,7 +62,7 @@ public class Pessoa {
         return pessoa;
     }
 
-    public void insere(final Hashtable<String, Object> params) {
+    public static void insere(final Hashtable<String, Object> params) {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
@@ -52,7 +76,7 @@ public class Pessoa {
         bd.fechaConnection();
     }
 
-    public void apaga(final Hashtable<String, Object> params) {
+    public static void apaga(final Hashtable<String, Object> params) {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
