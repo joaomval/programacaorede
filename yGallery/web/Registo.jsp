@@ -19,7 +19,7 @@
                 <table width="100%" border="0">
                     <tr>
                     <form method="post" action="/yGallery/User?accao=faz_login">
-                        <p><input type="text" value="email" name="var_email" size="20"> <input type="text" value="password" name="var_password" size="20">
+                        <p><input type="text" value="email" name="var_email" size="20"> <input type="password" value="password" name="var_password" size="20">
                             <INPUT TYPE="SUBMIT" VALUE="login"></p>
                     </form>
                     </tr>
@@ -30,17 +30,17 @@
                 <p><a href="/yGallery/logout.jsp">Sair</a></p>
                 <%}%>
             </div>
-             <div id="mainnav">
+            <div id="mainnav">
                 <ul>
-                    <li><a href="#">Inicio</a></li>
+                    <li><a href="/yGallery/index.jsp">Inicio</a></li>
                     <li><a href="#">Galeria</a></li>
                     <li><a href="#">Agenda</a></li>
                     <li><a href="#">Contacto</a></li>
                     <% if (session.getAttribute("pessoa") == null) {%>
                     <li><a href="/yGallery/Registo.jsp">Registar</a></li>
-                    <% }else{ %>
-                    <li><a href="/Perfil.jsp">Perfil</a></li>
-                    <% } %>
+                    <% } else {%>
+                    <li><a href="/yGallery/Perfil.jsp">Perfil</a></li>
+                    <% }%>
                 </ul>
             </div>
             <div id="menu">
@@ -70,34 +70,36 @@
                     <form method="post" action="/yGallery/User?accao=inserir_pessoa">
                         <table width="100%" border="0" cellpadding="8">
                             <tr>
+                                <%@page import="Sistema.Utilidades" %>
+                                <% Utilidades.populaAtributosForm(request, response);%>
                                 <% String email = (String) session.getAttribute("email");
-                                String nome = (String) session.getAttribute("nome");
-                                String nascimento = (String) session.getAttribute("nascimento");
-                                String morada = (String) session.getAttribute("morada");
-                                String postal = (String) session.getAttribute("postal");
+                                            String nome = (String) session.getAttribute("nome");
+                                            String nascimento = (String) session.getAttribute("dataNascimento");
+                                            String morada = (String) session.getAttribute("morada");
+                                            String postal = (String) session.getAttribute("codPostal");
                                 %>
                                 <th width="23%" align="right" valign="middle" scope="col">E-Mail</th>
-                                <td><input type="text" <% if(email!=null){ %>value="<%=email%>" <%}%> name="var_email" size="20">
-                                    <% if(session.getAttribute("emailExiste")!=null){ %>
+                                <td><input type="text" <% if (email != null) {%>value="<%=email%>" <%}%> name="var_email" size="20">
+                                    <% if (session.getAttribute("emailExiste") != null) {%>
                                     <font color="#FF0000"> email já em utilização</font>
-                                    <% } %>
-                                    </td>
+                                    <% }%>
+                                </td>
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Nome</th>
-                                <td><input type="text" <%if(nome!=null){%>value="<%=nome%>" <%}%> name="var_nome" size="20"></td>
+                                <td><input type="text" <%if (nome != null) {%>value="<%=nome%>" <%}%> name="var_nome" size="20"></td>
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Data de Nascimento</th>
-                                <td><input type="text" <%if(nascimento!=null){%>value="<%=nascimento%>" <%}%> name="var_datadenascimento" size="20"></td>
+                                <td><input type="text" <%if (nascimento != null) {%>value="<%=nascimento%>" <%}%> name="var_datadenascimento" size="20"></td>
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Morada</th>
-                                <td><input type="text" <%if(morada!=null){%>value="<%=morada%>" <%}%> name="var_morada" size="70"></td>
+                                <td><input type="text" <%if (morada != null) {%>value="<%=morada%>" <%}%> name="var_morada" size="70"></td>
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Código Postal</th>
-                                <td><input type="text" <%if(postal!=null){%>value="<%=postal%>" <%}%> name="var_codigopostal" size="15"></td>
+                                <td><input type="text" <%if (postal != null) {%>value="<%=postal%>" <%}%> name="var_codigopostal" size="15"></td>
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Password</th>
@@ -106,9 +108,9 @@
                             <tr>
                                 <th align="right" valign="middle" scope="row">Repetir Password</th>
                                 <td><input type="password" name="var_repassword" size="20">
-                                    <% if(session.getAttribute("passwordDif")!=null){ %>
+                                    <% if (session.getAttribute("passwordDif") != null) {%>
                                     <font color="#FF0000"> passwords não são iguais</font>
-                                    <% } %>
+                                    <% }%>
                                 </td>
                             </tr>
                             <tr>

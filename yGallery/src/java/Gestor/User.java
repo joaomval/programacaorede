@@ -160,7 +160,7 @@ public class User extends HttpServlet {
 
             } else {
                 session.setAttribute("emailExiste", "emailExiste");
-                Utilidades.populaAtributos(request, response);
+                Utilidades.populaAtributosForm(request, response);
                 response.sendRedirect("/yGallery/Registo.jsp");
             }
 
@@ -190,32 +190,22 @@ public class User extends HttpServlet {
     private void alteraDados(HttpServletRequest request, HttpServletResponse response) throws IOException, Exception {
         HttpSession session = request.getSession();
         Hashtable params = new Hashtable();
+        
         params.put("var_idPessoa", session.getAttribute("id"));
         params.put("var_email", request.getParameter("var_email"));
         params.put("var_nome", request.getParameter("var_nome"));
         params.put("var_datadenascimento", request.getParameter("var_datadenascimento"));
         params.put("var_morada", request.getParameter("var_morada"));
         params.put("var_codigopostal", request.getParameter("var_codigopostal"));
-        String password = request.getParameter("var_password");
-        String repassword = request.getParameter("var_repassword");
-        if (password != null) {
-            if (!password.equals(repassword)) {
-                session.setAttribute("passwordDif", "diferente");
-                response.sendRedirect("/yGallery/Perfil.jsp");
-            } else {
-                if (verificaSeMailEstaLivre(request, response) || request.getParameter("var_email").equals(Pessoa.devolvePessoaPorEmail(request, response)) ) {
-                    params.put("var_password", password);
-
-                    Pessoa.altera(params);
-                    response.sendRedirect("/yGallery/index.jsp");
-                } else {
-                    session.setAttribute("emailExiste", "emailExiste");
-                    response.sendRedirect("/yGallery/Perfil.jsp");
-                }
-            }
-        } else {
+        
+        if (verificaSeMailEstaLivre(request, response) || session.getAttribute("email").equals(request.getParameter("var_email"))) {
             Pessoa.altera(params);
+            session.removeAttribute("emailExiste");
             response.sendRedirect("/yGallery/index.jsp");
+        } else {
+            session.setAttribute("emailExiste", "emailExiste");
+            response.sendRedirect("/yGallery/Perfil.jsp");
         }
+
     }
 }

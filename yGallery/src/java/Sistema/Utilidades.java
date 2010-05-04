@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Sistema;
 
 import BaseDados.Teste_Acesso_BD;
@@ -17,7 +16,8 @@ import javax.servlet.http.HttpSession;
  * @author Joao
  */
 public class Utilidades {
-    public static void populaAtributos(HttpServletRequest request, HttpServletResponse response){
+
+    public static void populaAtributosSession(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
@@ -42,5 +42,13 @@ public class Utilidades {
             bd.fechaConnection();
         }
     }
-    
+
+    public static void populaAtributosForm(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        session.setAttribute("email", request.getAttribute("var_mail"));
+        session.setAttribute("nome", request.getAttribute("var_nome"));
+        session.setAttribute("dataNascimento", request.getAttribute("var_datadenascimento"));
+        session.setAttribute("morada", request.getAttribute("var_morada"));
+        session.setAttribute("codPostal", request.getAttribute("var_codigopostal"));
+    }
 }
