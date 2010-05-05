@@ -45,10 +45,12 @@ public class Utilidades {
 
     public static void populaAtributosForm(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
-        session.setAttribute("email", request.getAttribute("var_mail"));
-        session.setAttribute("nome", request.getAttribute("var_nome"));
-        session.setAttribute("dataNascimento", request.getAttribute("var_datadenascimento"));
-        session.setAttribute("morada", request.getAttribute("var_morada"));
-        session.setAttribute("codPostal", request.getAttribute("var_codigopostal"));
+        if (request.getParameter("var_email") != null) {
+            session.setAttribute("email", request.getParameter("var_email"));
+            session.setAttribute("nome", request.getParameter("var_nome"));
+            session.setAttribute("dataNascimento", request.getParameter("var_datadenascimento"));
+            session.setAttribute("morada", request.getParameter("var_morada"));
+            session.setAttribute("codPostal", request.getParameter("var_codigopostal"));
+        }
     }
 }
