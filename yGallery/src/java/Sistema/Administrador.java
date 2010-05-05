@@ -13,12 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Administrador {
 
-    public String devolveAdministradorPorId(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public static String devolveIdAdministradorPorIdPessoa(final String ID) throws Exception {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
         Hashtable params = new Hashtable();
-        params.put("var_id", request.getParameter("var_id"));
+        params.put("var_id", ID);
         String qryName = new String("devolve_administrador_por_id");
         ResultSet rs;
         String administrador = null;
@@ -26,7 +26,7 @@ public class Administrador {
             rs = bd.executeSelect(qryName, params);
             while (rs.next()) {
                 administrador = rs.getString("idAdministrador");
-                System.out.println("ADMINISTRADOR@@@@@@@: " + administrador);
+                System.out.println("IDADMINISTRADOR@@@@@@@: " + administrador);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -79,6 +79,14 @@ public class Administrador {
         }
         bd.fechaStatement();
         bd.fechaConnection();
+    }
 
+    public static boolean eAdmin(final String ID) throws Exception {
+        if (ID != null) {
+            if (devolveIdAdministradorPorIdPessoa(ID) != null) {
+                return true;
+            }
+        }
+        return false;
     }
 }

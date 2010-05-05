@@ -71,19 +71,23 @@
             <div id="contents">
                 <div class="blogentry">
                     <h3>
-				Noticias
+				Administração
                     </h3>
-                    <p>
-                        <img class="imagefloat" src="imagens/arte.jpg" alt="" width="100" height="100" border="0">
-				Texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-                        texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-                    </p> texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-                    <p>
-				Texto
-                    </p>
-                    <ul>
-                        <li><a href="#">mais...</a></li>
-                    </ul>
+
+                    <table width="100%" border="0" cellpadding="8">
+                        <tr>
+                            <th width="23%" align="right" valign="middle" scope="col"> <img src="imagens/edit_user.png">
+                            </th>
+                            <td>editar Utilizador </td>
+                        </tr>
+                        <tr>
+                            <th width="23%" align="right" valign="middle" scope="col"> <img src="imagens/edit_agenda.png">
+                            </th>
+                            <td>editar Agenda </td>
+                        </tr>
+                    </table>
+
+
                 </div>
             </div>
             <div id="footer">
