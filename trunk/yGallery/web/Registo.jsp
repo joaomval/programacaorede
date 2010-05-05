@@ -70,8 +70,6 @@
                     <form method="post" action="/yGallery/User?accao=inserir_pessoa">
                         <table width="100%" border="0" cellpadding="8">
                             <tr>
-                                <%@page import="Sistema.Utilidades" %>
-                                <% Utilidades.populaAtributosForm(request, response);%>
                                 <% String email = (String) session.getAttribute("email");
                                             String nome = (String) session.getAttribute("nome");
                                             String nascimento = (String) session.getAttribute("dataNascimento");

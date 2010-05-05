@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.hibernate.validator.constraints.Email;
 
 /**
  *
@@ -206,6 +205,5 @@ public class User extends HttpServlet {
             session.setAttribute("emailExiste", "emailExiste");
             response.sendRedirect("/yGallery/Perfil.jsp");
         }
-
     }
 }
