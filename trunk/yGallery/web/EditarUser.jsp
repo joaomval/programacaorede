@@ -71,23 +71,21 @@
             <div id="contents">
                 <div class="blogentry">
                     <h3>
-				Administração
+				Editar Utilizador
                     </h3>
 
-                    <table width="100%" border="0" cellpadding="8">
-                        <tr>
-                            <th width="23%" align="right" valign="middle" scope="col"><a href="/yGallery/EditarUser.jsp" <img src="imagens/edit_user.png"></a>
-                            </th>
-                            <td><a href="/yGallery/EditarUser.jsp"> editar Utilizador</a> </td>
-                        </tr>
-                        <tr>
-                            <th width="23%" align="right" valign="middle" scope="col"> <img src="imagens/edit_agenda.png">
-                            </th>
-                            <td>editar Agenda </td>
-                        </tr>
-                    </table>
 
-
+                    <%@page import="Sistema.Pessoa"%>
+                    <%@page import="java.util.List"%>
+                    <%--<select name="utlizador" onchange="frmDisplay.submit()">
+                        <%List<String> vector = Pessoa.devolveEmailPessoas(request, response);
+                                    System.out.println("VECTOR@@@@ " + vector);
+                                    for (int i = 0; i != vector.size(); i++) {
+                        %>
+                        <option selected ><%=vector.get(i)%></option>
+                        <%}%>
+                    </select>
+                    --%>
                 </div>
             </div>
             <div id="footer">

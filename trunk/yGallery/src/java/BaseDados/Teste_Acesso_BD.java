@@ -97,8 +97,11 @@ public class Teste_Acesso_BD {
 // instância de QueryResult guardará o resultado da query
         ResultSet rs = null;
         try {
+            if(params!=null){
             String query = cache.compileQuery(qryName, params);
              rs = stmt.executeQuery(query);
+            }else
+                rs = stmt.executeQuery("Select * from Pessoa");
             //result = new QueryResult();
             //result.populateData(rs);
         } catch (Exception e) {
