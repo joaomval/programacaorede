@@ -72,6 +72,7 @@
                 <div class="blogentry">
                     <h3>
 				Administração
+
                     </h3>
 
                     <table width="100%" border="0" cellpadding="8">
