@@ -7,10 +7,12 @@ package Sistema;
 import BaseDados.Teste_Acesso_BD;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 public class Pessoa {
 
@@ -37,7 +39,28 @@ public class Pessoa {
         }
         return pessoa;
     }
-    
+
+    public static List<String> devolveEmailPessoas(HttpServletRequest request, HttpServletResponse response) {
+        List<String> vector = new ArrayList<String>();
+        Teste_Acesso_BD bd = new Teste_Acesso_BD();
+        bd.carregaDriverEAbreConnection();
+        bd.abreStatement();
+        String qryName = new String("devolve_todas_pessoas");
+        ResultSet rs;
+        try {
+            rs = bd.executeSelect(qryName, null);
+            while (rs.next()) {
+                vector.add(rs.getString("eMail"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            bd.fechaStatement();
+            bd.fechaConnection();
+        }
+        return vector;
+    }
+
     public static String devolvePessoaPorEmail(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
