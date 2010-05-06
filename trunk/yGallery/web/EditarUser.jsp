@@ -73,10 +73,27 @@
                     <h3>
 				Editar Utilizador
                     </h3>
-
-
                     <%@page import="Sistema.Pessoa"%>
                     <%@page import="java.util.List"%>
+                    <%List<String> vector = Pessoa.devolveEmailPessoas(request, response);%>
+                    <TABLE border="1px">
+                        <% for (int row = 0; row < vector.size(); row++) {%>
+                        <TR>
+                            <%for (int col = 0; col < 4; col++) {%>
+                            <TD> <%if (row == 0 && col == 0) {%> id <%}%>
+                                <%if (row == 0 && col == 1) {%> E-Mail <%}%>
+                                <%if (row == 0 && col == 2) {%> Nome <%}%>
+                                <%if (row == 0 && col == 3) {%> Editar <%}%>
+                                <%if (row!=0){%>
+                                ola
+                                <%}%>
+                            </TD>
+                            <% }%>
+                        </TR>
+                        <% }%>
+                    </TABLE>
+
+
                     <%--<select name="utlizador" onchange="frmDisplay.submit()">
                         <%List<String> vector = Pessoa.devolveEmailPessoas(request, response);
                                     System.out.println("VECTOR@@@@ " + vector);

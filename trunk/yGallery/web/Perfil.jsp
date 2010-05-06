@@ -40,7 +40,11 @@
                     <% if (session.getAttribute("pessoa") == null) {%>
                     <li><a href="/yGallery/Registo.jsp">Registar</a></li>
                     <% } else {%>
-                    <li><a href="/Perfil.jsp">Perfil</a></li>
+                    <li><a href="/yGallery/Perfil.jsp">Perfil</a></li>
+                    <% }%>
+                    <%@page import="Sistema.Administrador" %>
+                    <%if (Administrador.eAdmin((String) session.getAttribute("id"))) {%>
+                    <li><a href="/yGallery/Administracao.jsp">Administração</a></li>
                     <% }%>
                 </ul>
             </div>
