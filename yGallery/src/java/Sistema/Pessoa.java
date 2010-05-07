@@ -40,6 +40,48 @@ public class Pessoa {
         return pessoa;
     }
 
+    public static List<String> devolveIdPessoas(HttpServletRequest request, HttpServletResponse response) {
+        List<String> vector = new ArrayList<String>();
+        Teste_Acesso_BD bd = new Teste_Acesso_BD();
+        bd.carregaDriverEAbreConnection();
+        bd.abreStatement();
+        String qryName = new String("devolve_todas_pessoas");
+        ResultSet rs;
+        try {
+            rs = bd.executeSelect(qryName, null);
+            while (rs.next()) {
+                vector.add(rs.getString("idPessoa"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            bd.fechaStatement();
+            bd.fechaConnection();
+        }
+        return vector;
+    }
+
+    public static List<String> devolveNomePessoas(HttpServletRequest request, HttpServletResponse response) {
+        List<String> vector = new ArrayList<String>();
+        Teste_Acesso_BD bd = new Teste_Acesso_BD();
+        bd.carregaDriverEAbreConnection();
+        bd.abreStatement();
+        String qryName = new String("devolve_todas_pessoas");
+        ResultSet rs;
+        try {
+            rs = bd.executeSelect(qryName, null);
+            while (rs.next()) {
+                vector.add(rs.getString("nome"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            bd.fechaStatement();
+            bd.fechaConnection();
+        }
+        return vector;
+    }
+
     public static List<String> devolveEmailPessoas(HttpServletRequest request, HttpServletResponse response) {
         List<String> vector = new ArrayList<String>();
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
