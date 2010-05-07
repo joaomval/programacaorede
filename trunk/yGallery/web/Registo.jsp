@@ -16,19 +16,19 @@
             </div>
             <div id ="login">
                 <% if (session.getAttribute("pessoa") == null) {%>
-                <table width="100%" border="0">
-                    <tr>
-                    <form method="post" action="/yGallery/User?accao=faz_login">
-                        <p><input type="text" value="email" name="var_email" size="20"> <input type="password" value="password" name="var_password" size="20">
-                            <INPUT TYPE="SUBMIT" VALUE="login"></p>
-                    </form>
-                    </tr>
-                </table>
+                <form method="post" action="User?accao=faz_login">
+                    <div><label for="email">E-Mail</label>
+                        <input id="email" type="text" name="var_email" size="15"></div>
+                    <div><label for="password">Password</label>
+                        <input id="password" type="password" name="var_password" size="15"></div>
+                    <INPUT TYPE="SUBMIT" class="formbutton" VALUE="login">
+                </form>
+
                 <% } else {%>
                 <p>Bem-vindo </p>
-                <p><%= session.getAttribute("pessoa")%></p>
-                <p><a href="/yGallery/logout.jsp">Sair</a></p>
-                <%}%>
+                <p><%= session.getAttribute("pessoa")%>
+                    <a href="/yGallery/logout.jsp">Sair</a></p>
+                    <%}%>
             </div>
             <div id="mainnav">
                 <ul>
@@ -112,7 +112,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><INPUT TYPE="SUBMIT" VALUE="Submeter"></td>
+                                <td><INPUT TYPE="SUBMIT" class="formbutton" VALUE="Submeter"></td>
                             </tr>
                         </table>
                     </form>

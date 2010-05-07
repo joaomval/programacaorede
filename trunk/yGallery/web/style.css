@@ -4,12 +4,12 @@ global styles
 
 body
 {
-	margin: 0;
-	padding: 0;
-	font: 85% arial, hevetica, sans-serif;
-	text-align: center;
-	color: #000000;
-	background: #595c58;
+    margin: 0;
+    padding: 0;
+    font: 85% arial, hevetica, sans-serif;
+    text-align: center;
+    color: #000000;
+    background: #595c58;
 }
 
 a:link { color: #B52C07; }
@@ -21,16 +21,16 @@ h1, h2, h3, h4, h5, h6 { margin: 0 0 .5em; }
 
 h2
 {
-	color: #B52C07;
-	font: 140% georgia, times, "times new roman", serif;
+    color: #B52C07;
+    font: 140% georgia, times, "times new roman", serif;
 }
 
 h2 a { text-decoration: none; }
 
 h3
 {
-	color: #7d8206;
-	font: 110% georgia, times, "times new roman", serif;
+    color: #7d8206;
+    font: 110% georgia, times, "times new roman", serif;
 }
 h4
 {
@@ -43,11 +43,11 @@ container styles
 
 #container
 {
-	margin: 1em auto;
-	width: 1024px;
-	text-align: left;
-	background: #C5D3C2;
-	border: 1px solid #4f574d;
+    margin: 1em auto;
+    width: 1024px;
+    text-align: left;
+    background: #C5D3C2;
+    border: 1px solid #4f574d;
 }
 
 /* ------------------------------
@@ -56,16 +56,30 @@ header styles
 
 #header
 {
-	height:90px;
-	width: 80%;
-	position: relative;
+    height:90px;
+    width: 80%;
+    position: relative;
 
 }
 
 #header h1
 {
-	position: absolute;
-	left: -500em;
+    position: absolute;
+    left: -500em;
+}
+
+label
+{
+    width: 4em;
+    float: none;
+    text-align: right;
+    margin-right: 0.5em;
+    display: inline-block
+}
+
+.submit input
+{
+    margin-left: 1.5em;
 }
 /* ------------------------------
 login styles
@@ -73,11 +87,11 @@ login styles
 
 #login
 {
-	height:90px;
-	width:189px;
-	position:absolute;
-	left: 1020px;
-	top: 5px;
+    height:150px;
+    width:300px;
+    position:absolute;
+    left: 1000px;
+    top: 20px;
 }
 
 /* ------------------------------
@@ -86,38 +100,38 @@ mainnav styles
 
 #mainnav
 {
-	background: #b7b9b6;
-	color: #000000;
-	padding: 2px 0;
-	margin-bottom: 22px;
+    background: #b7b9b6;
+    color: #000000;
+    padding: 2px 0;
+    margin-bottom: 22px;
 }
 
 #mainnav ul
 {
-	margin: 0 0 0 20px;
-	padding: 0;
-	list-style-type: none;
-	border-left: 1px solid #4f574d;
+    margin: 0 0 0 20px;
+    padding: 0;
+    list-style-type: none;
+    border-left: 1px solid #4f574d;
 }
 
 #mainnav li
 {
-	display: inline;
-	padding: 0 10px;
-	border-right: 1px solid #4f574d;
+    display: inline;
+    padding: 0 10px;
+    border-right: 1px solid #4f574d;
 }
 
 #mainnav li a
 {
-	text-decoration: none;
-	color: #000000;
+    text-decoration: none;
+    color: #000000;
 }
 
 #mainnav li a:hover
 {
-	text-decoration: none;
-	color: #000000;
-	background-color: #888b88;
+    text-decoration: none;
+    color: #000000;
+    background-color: #888b88;
 }
 
 /* ------------------------------
@@ -126,23 +140,23 @@ menu styles
 
 #menu
 {
-	float: right;
-	width: 165px;
-	border-left: 1px solid #4f574d;
-	padding-left: 15px;
+    float: right;
+    width: 165px;
+    border-left: 1px solid #4f574d;
+    padding-left: 15px;
 }
 
 #menu ul
 {
-	margin: 1em 0;
-	padding: 0;
+    margin: 1em 0;
+    padding: 0;
 }
 
 #menu ul li
 {
-	margin: 0 0 1em;
-	padding: 0;
-	list-style-type: none;
+    margin: 0 0 1em;
+    padding: 0;
+    list-style-type: none;
 }
 
 /* ------------------------------
@@ -151,9 +165,9 @@ contents styles
 
 #contents
 {
-	float: left;
-	width: 700px;
-	margin: 0 0 0 20px;
+    float: left;
+    width: 700px;
+    margin: 0 0 0 20px;
 }
 
 #contents p { line-height: 165%; }
@@ -161,26 +175,26 @@ contents styles
 
 .blogentry ul
 {
-	text-align: right;
-	margin: 1em 0;
-	padding: 0;
-	font-size: 95%;
+    text-align: right;
+    margin: 1em 0;
+    padding: 0;
+    font-size: 95%;
 }
 
 .blogentry li
 {
-	list-style-type: none;
-	display: inline;
-	margin: 0;
-	padding: 0 0 0 7px;
+    list-style-type: none;
+    display: inline;
+    margin: 0;
+    padding: 0 0 0 7px;
 }
 
 .imagefloat
 {
-	float: right;
-	padding: 2px;
-	border: 1px solid #4f574d;
-	margin: 0 0 10px 10px;
+    float: right;
+    padding: 2px;
+    border: 1px solid #4f574d;
+    margin: 0 0 10px 10px;
 }
 
 /* ------------------------------
@@ -189,10 +203,19 @@ footer styles
 
 #footer
 {
-	clear: both;
-	color: #272900;
-	text-align: right;
-	font-size: 90%;
-	background: #be5e1b;
-	padding: 5px;
+    clear: both;
+    color: #272900;
+    text-align: right;
+    font-size: 90%;
+    background: #be5e1b;
+    padding: 5px;
+}
+.formbutton{
+    cursor:pointer;
+    border:outset 1px #ccc;
+    background:#999;
+    color:#666;
+    font-weight:bold;
+    padding: 1px 2px;
+    background:url(imagens/formbg.gif) repeat-x left top;
 }

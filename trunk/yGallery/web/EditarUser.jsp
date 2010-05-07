@@ -17,19 +17,19 @@
 
             <div id ="login">
                 <% if (session.getAttribute("pessoa") == null) {%>
-                <table width="100%" border="0">
-                    <tr>
-                    <form method="post" action="User?accao=faz_login">
-                        <p><input type="text" value="email" name="var_email" size="20"> <input type="password" value="password" name="var_password" size="20">
-                            <INPUT TYPE="SUBMIT" VALUE="login"></p>
-                    </form>
-                    </tr>
-                </table>
+                <form method="post" action="User?accao=faz_login">
+                    <div><label for="email">E-Mail</label>
+                        <input id="email" type="text" name="var_email" size="15"></div>
+                    <div><label for="password">Password</label>
+                        <input id="password" type="password" name="var_password" size="15"></div>
+                    <INPUT TYPE="SUBMIT" class="formbutton" VALUE="login">
+                </form>
+
                 <% } else {%>
                 <p>Bem-vindo </p>
-                <p><%= session.getAttribute("pessoa")%></p>
-                <p><a href="/yGallery/logout.jsp">Sair</a></p>
-                <%}%>
+                <p><%= session.getAttribute("pessoa")%>
+                    <a href="/yGallery/logout.jsp">Sair</a></p>
+                    <%}%>
             </div>
 
             <div id="mainnav">
@@ -76,21 +76,27 @@
                     <%@page import="Sistema.Pessoa"%>
                     <%@page import="java.util.List"%>
                     <%List<String> vector = Pessoa.devolveEmailPessoas(request, response);%>
+                    <%List<String> vector2 = Pessoa.devolveIdPessoas(request, response);%>
+                    <%List<String> vector3 = Pessoa.devolveNomePessoas(request, response);%>
                     <TABLE border="1px">
+
+                        <th align="middle">ID</th>
+                        <th align="middle">E-Mail</th>
+                        <th align="middle">Nome</th>
+                        <th align="middle">Editar</th>
+
                         <% for (int row = 0; row < vector.size(); row++) {%>
-                        <TR>
+                        <TR> 
                             <%for (int col = 0; col < 4; col++) {%>
-                            <TD> <%if (row == 0 && col == 0) {%> id <%}%>
-                                <%if (row == 0 && col == 1) {%> E-Mail <%}%>
-                                <%if (row == 0 && col == 2) {%> Nome <%}%>
-                                <%if (row == 0 && col == 3) {%> Editar <%}%>
-                                <%if (row!=0){%>
-                                ola
+                            <TD align="middle">
+                                <%if (col == 3) {%> <img src="imagens/editar.png"><%}%>
+                                <%if (col == 1) {%> <%=vector.get(row)%><%}%>
+                                <%if (col == 0) {%> <%=vector2.get(row)%><%}%>
+                                <%if (col == 2) {%> <%=vector3.get(row)%><%}%>
                                 <%}%>
                             </TD>
                             <% }%>
                         </TR>
-                        <% }%>
                     </TABLE>
 
 
