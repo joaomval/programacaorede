@@ -178,7 +178,7 @@ public class User extends HttpServlet {
         }
     }
 
-    private boolean verificaSeMailEstaLivre(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public static boolean verificaSeMailEstaLivre(HttpServletRequest request, HttpServletResponse response) throws Exception {
         if (Pessoa.devolvePessoaPorEmail(request, response) == null) {
             return true;
         }

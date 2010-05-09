@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Your Gallery</title>
@@ -89,7 +90,7 @@
                         <TR> 
                             <%for (int col = 0; col < 4; col++) {%>
                             <TD align="middle">
-                                <%if (col == 3) {%> <img src="imagens/editar.png"><%}%>
+                                <%if (col == 3) {%> <a href="Admin?accao=<%=vector2.get(row)%>"><img src="imagens/editar.png"></a><%}%>
                                 <%if (col == 1) {%> <%=vector.get(row)%><%}%>
                                 <%if (col == 0) {%> <%=vector2.get(row)%><%}%>
                                 <%if (col == 2) {%> <%=vector3.get(row)%><%}%>
@@ -98,8 +99,7 @@
                             <% }%>
                         </TR>
                     </TABLE>
-
-
+                           
                     <%--<select name="utlizador" onchange="frmDisplay.submit()">
                         <%List<String> vector = Pessoa.devolveEmailPessoas(request, response);
                                     System.out.println("VECTOR@@@@ " + vector);
