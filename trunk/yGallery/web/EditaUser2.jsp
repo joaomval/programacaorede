@@ -72,16 +72,17 @@
                     <h3>
 				Alterar Dados:
                     </h3>
-                    <form method="post" action="/yGallery/User?accao=altera_dados">
+                    <form method="post" action="/yGallery/Admin?accao=altera_dados">
                         <table width="100%" border="0" cellpadding="8">
                             <tr>
                                 <%@page import="Sistema.Utilidades" %>
-                                <% Utilidades.populaAtributosSession(request, response);%>
+                                <% Utilidades.populaAtributosSessionOutro(request, response, (String) session.getAttribute("id_pessoa_editar"));%>
                                 <% String email = (String) session.getAttribute("email");
                                             String nome = (String) session.getAttribute("nome");
                                             String nascimento = (String) session.getAttribute("dataNascimento");
                                             String morada = (String) session.getAttribute("morada");
                                             String postal = (String) session.getAttribute("codPostal");
+                                            String artista = (String) session.getAttribute("artista");
                                 %>
                                 <th width="23%" align="right" valign="middle" scope="col">E-Mail</th>
                                 <td><input type="text" <% if (email != null) {%>value="<%=email%>" <%}%> name="var_email" size="20">
@@ -105,6 +106,13 @@
                             <tr>
                                 <th align="right" valign="middle" scope="row">Código Postal</th>
                                 <td><input type="text" <%if (postal != null) {%>value="<%=postal%>" <%}%> name="var_codigopostal" size="15"></td>
+                            </tr>
+                            <tr>
+                                <th align="right" valign="middle" scope="row">Artista</th>
+                                <%System.out.println("ARTISTA@2@@ " + artista);%>
+                                <td><input type="checkbox" name="var_artista" value="eartista"<%if (artista != null) {%> checked <%}%></td>
+                            </tr>
+                            <%session.setAttribute("artista", null);%>
                             <tr>
                                 <td><INPUT TYPE="SUBMIT" class="formbutton" VALUE="Submeter"></td>
                             </tr>
