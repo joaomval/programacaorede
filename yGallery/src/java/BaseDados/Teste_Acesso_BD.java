@@ -100,8 +100,14 @@ public class Teste_Acesso_BD {
             if(params!=null){
             String query = cache.compileQuery(qryName, params);
              rs = stmt.executeQuery(query);
-            }else
-                rs = stmt.executeQuery("Select * from Pessoa");
+            }else{
+                if(qryName.equals("devolve_todas_pessoas"))
+                    rs = stmt.executeQuery("Select * from Pessoa");
+                else{
+                    rs = stmt.executeQuery("Select * from tipo_artigo");
+                }
+            }
+                
             //result = new QueryResult();
             //result.populateData(rs);
         } catch (Exception e) {

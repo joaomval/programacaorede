@@ -6,7 +6,11 @@ package Sistema;
 
 import BaseDados.Teste_Acesso_BD;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -45,9 +49,10 @@ public class TipoArtigo {
             bd.executaUpdate(qryName, params);
         } catch (Exception ex) {
             ex.printStackTrace();
+        } finally {
+            bd.fechaStatement();
+            bd.fechaConnection();
         }
-        bd.fechaStatement();
-        bd.fechaConnection();
     }
 
     public void apaga(final Hashtable<String, Object> params) {
@@ -59,8 +64,30 @@ public class TipoArtigo {
             bd.executaUpdate(qryName, params);
         } catch (Exception ex) {
             ex.printStackTrace();
+        } finally {
+            bd.fechaStatement();
+            bd.fechaConnection();
         }
-        bd.fechaStatement();
-        bd.fechaConnection();
+    }
+
+    public static List<String> devolveTiposArtigo() {
+        List<String> artigos = new ArrayList<String>();
+        Teste_Acesso_BD bd = new Teste_Acesso_BD();
+        bd.carregaDriverEAbreConnection();
+        bd.abreStatement();
+        String qryName = new String("devolve_tipos_artigo");
+        ResultSet rs;
+        try {
+            rs=bd.executeSelect(qryName, null);
+            while(rs.next()){
+                artigos.add(rs.getString("tipo"));
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(TipoArtigo.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            bd.fechaStatement();
+            bd.fechaConnection();
+        }
+        return artigos;
     }
 }
