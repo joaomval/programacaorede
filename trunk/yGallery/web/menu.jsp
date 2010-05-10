@@ -34,7 +34,7 @@
 
             <div id="mainnav">
                 <ul>
-                    <li><a href="#">Inicio</a></li>
+                    <li><a href="/yGallery/index.jsp">Inicio</a></li>
                     <li><a href="#">Galeria</a></li>
                     <li><a href="#">Agenda</a></li>
                     <li><a href="#">Contacto</a></li>

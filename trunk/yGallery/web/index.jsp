@@ -79,15 +79,16 @@
 				Noticias
                     </h3>
                     <p>
-                        <img class="imagefloat" src="imagens/arte.jpg" alt="" width="100" height="100" border="0">
-				Texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-                        texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-                    </p> texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-                    <p>
-				Texto
-                    </p>
+                        <img class="imagefloat" src="imagens/arte.jpg" alt="" width="149" height="93" border="1">
+
+                    <h2>Obra de Picasso estabelece recorde mundial em leilões de arte</h2>
+                    <p>NOVA YORK (Reuters) - A pintura "Nu, Folhas Verdes e Busto", de Pablo Picasso, foi leiloada por um valor impressionante de mais de 106 milhões de dólares pela Christie's na terça-feira, estabelecendo um recorde para uma obra de arte vendida em leilão.</p>
+
+                    <p>O vibrante retrato em tamanho grande da amada e frequente modelo de Picasso, Marie-Therese Walter, foi o destaque de uma coleção internacional compilada pelos falecidos patronos de arte de Los Angeles Frances e Sidney Brody.</p>
+
+                    <p>A estimativa era de que a pintura fosse vendida por mais de 80 milhões de dólares, mas muitos especialistas de arte previam nas últimas semanas que a obra ganharia confiança no mercado de artes, atualmente se recuperando, e quebraria o recorde anterior de 104,3 milhões de dólares estabelecido em fevereiro por "Walking Man I" (Homem que Caminha I), de Giacometti, estabelecido na Sotheby's de Londres.</p>
                     <ul>
-                        <li><a href="#">mais...</a></li>
+                        <li><a href="http://br.noticias.yahoo.com/s/reuters/100505/entretenimento/cultura_arte_picasso_leilao_recorde" target="_blank" >mais...</a></li>
                     </ul>
                 </div>
             </div>
