@@ -5,6 +5,7 @@
 package Gestor;
 
 import Sistema.Artista;
+import Sistema.Galeria;
 import Sistema.Pessoa;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -119,6 +120,9 @@ public class Admin extends HttpServlet {
                 params2.put("var_idPessoa", session.getAttribute("id_pessoa_editar"));
                 params2.put("var_homepage", "yGallery.site");
                 Artista.insere(params2);
+                Hashtable params3 = new Hashtable();
+                params3.put("var_idArtista", Artista.devolveArtistaPorId(request, response));
+                Galeria.insere(params3);
                 response.sendRedirect("/yGallery/EditaUser2.jsp");
             }
         } else {

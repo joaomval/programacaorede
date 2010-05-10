@@ -8,8 +8,7 @@
 
     <body>
         <div id="container">
-            <jsp:include page="menu.jsp" flush="true" />
-            <%--<div id="header" title="yourGallery">
+            <div id="header" title="yourGallery">
                 <h1>
 		  YourGallery
                 </h1>
@@ -53,46 +52,6 @@
                     <li><a href="/yGallery/MinhaGaleria.jsp">myGallery</a></li>
                     <% }%>
                 </ul>
-            </div>--%>
-            <div id="menu">
-                <h3>
-			Arquivos
-                </h3>
-                <ul>
-                    <li><a href="#">Março 2010</a></li>
-                    <li><a href="#">Fevereiro 2010</a></li>
-                    <li><a href="#">Janeiro 2010</a></li>
-                    <li><a href="#">Dezembro 2009</a></li>
-                    <li><a href="#">Novembro 2009</a></li>
-                </ul>
-                <h3>
-			Ultimas noticias
-                </h3>
-                <ul>
-                    <li><a href="#">Novo museu</a></li>
-                    <li><a href="#">Prémio internacional</a></li>
-                </ul>
-            </div>
-            <div id="contents">
-                <div class="blogentry">
-                    <h3>
-				Noticias
-                    </h3>
-                    <p>
-                        <img class="imagefloat" src="imagens/arte.jpg" alt="" width="100" height="100" border="0">
-				Texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-                        texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-                    </p> texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-                    <p>
-				Texto
-                    </p>
-                    <ul>
-                        <li><a href="#">mais...</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div id="footer">
-		Copyright © YourGallery 2010
             </div>
         </div>
     </body>

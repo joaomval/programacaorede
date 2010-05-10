@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Your Gallery</title>
@@ -31,24 +32,20 @@
             <div id="contents">
                 <div class="blogentry">
                     <h3>
-				Administração
-
+				myGallery
                     </h3>
 
-                    <table width="100%" border="0" cellpadding="8">
-                        <tr>
-                            <th width="23%" align="right" valign="middle" scope="col"><a href="/yGallery/EditarUser.jsp" <img src="imagens/edit_user.png"></a>
-                            </th>
-                            <td><a href="/yGallery/EditarUser.jsp"> editar Utilizador</a> </td>
-                        </tr>
-                        <tr>
-                            <th width="23%" align="right" valign="middle" scope="col"> <img src="imagens/edit_agenda.png">
-                            </th>
-                            <td>editar Agenda </td>
-                        </tr>
-                    </table>
+                    <jsp:include page="AdicionaItem.jsp" flush="true" />
 
-
+                    <%--<select name="utlizador" onchange="frmDisplay.submit()">
+                        <%List<String> vector = Pessoa.devolveEmailPessoas(request, response);
+                                    System.out.println("VECTOR@@@@ " + vector);
+                                    for (int i = 0; i != vector.size(); i++) {
+                        %>
+                        <option selected ><%=vector.get(i)%></option>
+                        <%}%>
+                    </select>
+                    --%>
                 </div>
             </div>
             <div id="footer">

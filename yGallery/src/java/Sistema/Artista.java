@@ -10,6 +10,38 @@ import javax.servlet.http.HttpSession;
 
 public class Artista {
 
+    public static boolean eArtista(final String ID) throws Exception{
+                if (ID != null) {
+            if (devolveIdArtistaPorIdPessoa(ID) != null) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static String devolveIdArtistaPorIdPessoa(final String ID) throws Exception {
+        Teste_Acesso_BD bd = new Teste_Acesso_BD();
+        bd.carregaDriverEAbreConnection();
+        bd.abreStatement();
+        Hashtable params = new Hashtable();
+        params.put("var_idPessoa", ID);
+        String qryName = new String("devolve_artista_por_idPessoa");
+        ResultSet rs;
+        String artista = null;
+        try {
+            rs = bd.executeSelect(qryName, params);
+            while (rs.next()) {
+                artista = rs.getString("idArtista");
+                System.out.println("IDArtista@@@@@@@: " + artista);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            bd.fechaStatement();
+            bd.fechaConnection();
+        }
+        return artista;
+    }
+
     public static String devolveArtistaPorId(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
