@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Galeria {
 
-    public String devolveGaleriaPorId(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public static String devolveGaleriaPorId(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
@@ -37,7 +37,7 @@ public class Galeria {
         return galeria;
     }
 
-    public void insere(final Hashtable<String, Object> params) {
+    public static void insere(final Hashtable<String, Object> params) {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
@@ -51,7 +51,7 @@ public class Galeria {
         bd.fechaConnection();
     }
 
-    public void apaga(final Hashtable<String, Object> params) {
+    public static void apaga(final Hashtable<String, Object> params) {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();

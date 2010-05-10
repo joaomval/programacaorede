@@ -37,6 +37,12 @@ h4
     color: red;
     font: 100% georgia, times, "times new roman", serif;
 }
+#Adiciona
+{
+    height:150px;
+    width:300px;
+    position:absolute;
+}
 /* ------------------------------
 container styles
 ------------------------------ */
@@ -47,7 +53,7 @@ container styles
     width: 1024px;
     text-align: left;
     background: #C5D3C2;
-    border: 1px solid #4f574d;
+    border: 0px solid #4f574d;
 }
 
 /* ------------------------------
