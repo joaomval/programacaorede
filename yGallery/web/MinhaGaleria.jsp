@@ -31,10 +31,6 @@
             </div>
             <div id="contents">
                 <div class="blogentry">
-                    <h3>
-				myGallery
-                    </h3>
-
                     <jsp:include page="AdicionaItem.jsp" flush="true" />
 
                     <%--<select name="utlizador" onchange="frmDisplay.submit()">
