@@ -31,11 +31,36 @@
                         <input id="preco" type="text" name="var_nome" size="5"></div>
                     <INPUT TYPE="SUBMIT" class="formbutton" VALUE="adiciona">
                 </form>--%>
+        <%@page import="java.util.List"%>
+        <%@page import="Sistema.TipoArtigo"%>
         <% String id = "1";%>
-        <form action="upload" method="post" ENCTYPE="multipart/form-data">
-            <input type="hidden" name="id" value="<%=id%>">
-            <input type="file" name="file" id="file">
-            <input type="submit" value="Enviar">
-        </form>
+        <div style="width: 335px">
+            <fieldset style="border-color: #f2a36c;">
+                <legend><h3>Inserir Artigo:</h3></legend>
+                <form name="form_insere" action="upload" method="post" ENCTYPE="multipart/form-data">
+                    <style>
+                        label { vertical-align: top; width: 75px }
+                    </style>
+                    <div><input type="hidden" name="id" value="<%=id%>">
+                        <input type="file" name="file" id="file"></div>
+                    <label for="tipo_item">Tipo artigo</label>
+                    <select name="tipo_item" onchange="frmDisplay.submit()">
+                        <%List<String> vector = TipoArtigo.devolveTiposArtigo();
+                                    System.out.println("tipos@@@@ " + vector);
+                                    for (int i = 0; i != vector.size(); i++) {
+                        %>
+                        <option selected ><%=vector.get(i)%></option>
+                        <%}%>
+                    </select>
+                    <div><label for="nome">Nome</label>
+                        <input id="nome" type="text" name="var_nome" size="20"></div>
+                    <div><label for="descricao">Descrição</label>
+                        <textarea name="descricao" rows="5"  ></textarea></div>
+                    <div><label for="preco">Preço</label>
+                        <input id="preco" type="text" name="var_nome" size="5"></div>
+                    <input type="submit" value="Enviar">
+                </form>
+            </fieldset>
+        </div>
     </body>
 </html>
