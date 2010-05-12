@@ -90,4 +90,27 @@ public class TipoArtigo {
         }
         return artigos;
     }
+
+     public static String devolveId(String tipo) {
+       String id_artigo=null;
+       Hashtable params = new Hashtable();
+       params.put("var_tipo_artigo", tipo);
+        Teste_Acesso_BD bd = new Teste_Acesso_BD();
+        bd.carregaDriverEAbreConnection();
+        bd.abreStatement();
+        String qryName = new String("devolve_id_por_tipo");
+        ResultSet rs;
+        try {
+            rs=bd.executeSelect(qryName, null);
+            while(rs.next()){
+                id_artigo = rs.getString("idTipoArtigo");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(TipoArtigo.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            bd.fechaStatement();
+            bd.fechaConnection();
+        }
+        return id_artigo;
+    }
 }
