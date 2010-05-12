@@ -23,9 +23,10 @@
                         <input id="email" type="text" name="var_email" size="15"></div>
                     <div><label for="password">Password</label>
                         <input id="password" type="password" name="var_password" size="15"></div>
-                    <INPUT TYPE="SUBMIT" class="formbutton" VALUE="login">
+                    <tr><td><INPUT TYPE="SUBMIT" class="formbutton" VALUE="login"></td>
+                     <td><a href="/yGallery/recuperarPassword.jsp">Recuperar password</a> </td></tr>
                 </form>
-
+                
                 <% } else {%>
                 <p>Bem-vindo </p>
                 <p><%= session.getAttribute("pessoa")%>

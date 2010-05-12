@@ -40,6 +40,30 @@ public class Pessoa {
         return pessoa;
     }
 
+     public static String devolvePasswordPorEmail(String email) throws Exception {
+        Teste_Acesso_BD bd = new Teste_Acesso_BD();
+        bd.carregaDriverEAbreConnection();
+        bd.abreStatement();
+        Hashtable params = new Hashtable();
+        params.put("var_email",email);
+        String qryName = new String("devolve_pessoa_por_email");
+        ResultSet rs;
+        String password = null;
+        try {
+            rs = bd.executeSelect(qryName, params);
+            while (rs.next()) {
+                password = rs.getString("password");
+                System.out.println("PESSOA@@@@@@@: " + password);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            bd.fechaStatement();
+            bd.fechaConnection();
+        }
+        return password;
+    }
+
     public static List<String> devolveIdPessoas(HttpServletRequest request, HttpServletResponse response) {
         List<String> vector = new ArrayList<String>();
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
