@@ -4,9 +4,12 @@
  */
 package Gestor;
 
+
+import Sistema.TipoArtigo;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Hashtable;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -44,19 +47,30 @@ public class upload extends HttpServlet {
         String path = this.getServletContext().getRealPath("/"); //isto vai parar ao projecto\build\src
         path = path.substring(0, path.lastIndexOf("\\build\\"));  //substring volta para projecto\
         path += "\\web\\upload\\"; //finalmente fica com projecto\web\pics
+        Hashtable params = new Hashtable();
         try {
+
+            
+
             for (FileItem item : items) {
                 if (item.isFormField()) {
                     String name = item.getFieldName();
+                   // System.out.println(name+"<-----------------");
                     String value = item.getString();
+                 //   System.out.println(value+"<-----------------");
                     //fazer algo com isto
+                    params.put(name, value);
+
                 } else {
                     item.write(new File(path + (int) (1 + (Math.random() * 1000000)) +".jpg"));
                 }
+                System.out.println(params+"<-----------------");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        trataHash(params);
         response.sendRedirect("/yGallery/MinhaGaleria.jsp");
     }
 
@@ -95,4 +109,11 @@ public class upload extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void trataHash(Hashtable params) {
+
+        params.put("var_Tipo_Artigo_idTipoArtigo", TipoArtigo.devolveId((String) params.get("tipo_item")));
+        //falta acabar
+
+    }
 }

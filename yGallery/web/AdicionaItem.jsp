@@ -33,7 +33,6 @@
                 </form>--%>
         <%@page import="java.util.List"%>
         <%@page import="Sistema.TipoArtigo"%>
-        <% String id = "1";%>
         <div style="width: 335px">
             <fieldset style="border-color: #f2a36c;">
                 <legend><h3>Inserir Artigo:</h3></legend>
@@ -41,8 +40,7 @@
                     <style>
                         label { vertical-align: top; width: 75px }
                     </style>
-                    <div><input type="hidden" name="id" value="<%=id%>">
-                        <input type="file" name="file" id="file"></div>
+                    <div><input type="file" name="file" id="file"></div>
                     <label for="tipo_item">Tipo artigo</label>
                     <select name="tipo_item" onchange="frmDisplay.submit()">
                         <%List<String> vector = TipoArtigo.devolveTiposArtigo();
@@ -55,9 +53,9 @@
                     <div><label for="nome">Nome</label>
                         <input id="nome" type="text" name="var_nome" size="20"></div>
                     <div><label for="descricao">Descrição</label>
-                        <textarea name="descricao" rows="5"  ></textarea></div>
+                        <textarea name="var_descricao" rows="5"  ></textarea></div>
                     <div><label for="preco">Preço</label>
-                        <input id="preco" type="text" name="var_nome" size="5"></div>
+                        <input id="preco" type="text" name="var_preco" size="5"></div>
                     <input type="submit" value="Enviar">
                 </form>
             </fieldset>
