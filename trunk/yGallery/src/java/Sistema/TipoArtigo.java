@@ -98,7 +98,7 @@ public class TipoArtigo {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
-        String qryName = new String("devolve_id_por_tipo");
+        String qryName = new String("devolve_tipos_artigo");
         ResultSet rs;
         try {
             rs=bd.executeSelect(qryName, null);
