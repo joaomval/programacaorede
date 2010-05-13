@@ -50,7 +50,7 @@
                                      <% if (session.getAttribute("NaoEmail") != null) {%>
                                     <font color="#FF0000"> email não é válido</font>
                                     <% }%>
-                                </td>
+                                                                  </td>
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Nome</th>
@@ -58,7 +58,10 @@
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Data de Nascimento</th>
-                                <td><input type="text" <%if (nascimento != null) {%>value="<%=nascimento%>" <%}%> name="var_datadenascimento" size="20"></td>
+                                <td><input type="text" <%if (nascimento != null) {%>value="<%=nascimento%>" <%}%> name="var_datadenascimento" size="20"><% if (session.getAttribute("NaoData") != null) {%>
+                                    <font color="#FF0000"> data não é válida</font>
+                                    <% }%></td>
+                                  
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Morada</th>
