@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Gestor;
 
 import java.io.File;
@@ -17,10 +14,8 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-/**
- *
- * @author Joao
- */
+
+
 public class Artista extends HttpServlet {
 
     public static final String INSERE_ARTIGO = "insere_artigo";

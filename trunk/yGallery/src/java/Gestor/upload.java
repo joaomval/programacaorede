@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Gestor;
 
 import Sistema.Artigo;
@@ -23,10 +20,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.*;
 
-/**
- *
- * @author Joao
- */
+
 public class upload extends HttpServlet {
 
     /** 
