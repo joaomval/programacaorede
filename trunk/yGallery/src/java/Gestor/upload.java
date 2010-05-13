@@ -5,16 +5,20 @@
 package Gestor;
 
 
+import Sistema.Artigo;
 import Sistema.TipoArtigo;
+import Sistema.Galeria;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.*;
@@ -35,6 +39,7 @@ public class upload extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
         FileItemFactory factory = new DiskFileItemFactory();
         ServletFileUpload upload = new ServletFileUpload(factory);
         List<FileItem> items = null;
@@ -62,15 +67,20 @@ public class upload extends HttpServlet {
                     params.put(name, value);
 
                 } else {
-                    item.write(new File(path + (int) (1 + (Math.random() * 1000000)) +".jpg"));
+                    String Ficheiro = (path + (String) session.getAttribute("id") + System.currentTimeMillis() +".jpg");
+                    item.write(new File(Ficheiro));
+
                 }
                 System.out.println(params+"<-----------------");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        trataHash(params);
+        try {
+            trataHash(params, request);
+        } catch (Exception ex) {
+            Logger.getLogger(upload.class.getName()).log(Level.SEVERE, null, ex);
+        }
         response.sendRedirect("/yGallery/MinhaGaleria.jsp");
     }
 
@@ -110,10 +120,12 @@ public class upload extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void trataHash(Hashtable params) {
-
-        params.put("var_Tipo_Artigo_idTipoArtigo", TipoArtigo.devolveId((String) params.get("tipo_item")));
-        //falta acabar
+    private void trataHash(Hashtable params, HttpServletRequest request ) throws Exception {
+        HttpSession session = request.getSession();
+        params.put("var_idTipoArtigo", TipoArtigo.devolveId((String) params.get("tipo_item")));
+        params.remove("tipo_item");
+        params.put("var_idGaleria",(String) Galeria.devolveIdGaleriaPorIdArtista(Sistema.Artista.devolveIdArtistaPorIdPessoa((String)session.getAttribute("id"))));
+        Artigo.insere(params);
 
     }
 }

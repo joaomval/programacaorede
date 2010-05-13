@@ -226,52 +226,48 @@ public class User extends HttpServlet {
     private void recuperarPassword(HttpServletRequest request, HttpServletResponse response) throws AddressException, MessagingException, Exception {
         HttpSession session1 = request.getSession();
         Properties props = System.getProperties();
-        String mensagem=null;
-        String password=Pessoa.devolvePasswordPorEmail((String)request.getParameter("para"));
-        
-        
-          if (password != null) {
-          
-         mensagem = "A sua password do yourgallery é: " +password+"";
-        /*props.put("mail.smtp.host", mailServer);
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.port", "587");*/
-        //testes
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.debug", "true");
-        props.put("mail.smtp.debug", "true");
-        props.put("mail.mime.charset", "ISO-8859-1");
-        props.put("mail.smtp.port", "465");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.socketFactory.port", "465");
-        props.put("mail.smtp.socketFactory.fallback", "false");
-        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        String mensagem = null;
+        String password = Pessoa.devolvePasswordPorEmail((String) request.getParameter("para"));
+        if (password != null) {
 
-        Session session = Session.getDefaultInstance(props);//recebe props
+            mensagem = "A sua password do yourgallery é: " + password + "";
+            /*props.put("mail.smtp.host", mailServer);
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.port", "587");*/
+            //testes
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.debug", "true");
+            props.put("mail.smtp.debug", "true");
+            props.put("mail.mime.charset", "ISO-8859-1");
+            props.put("mail.smtp.port", "465");
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.socketFactory.port", "465");
+            props.put("mail.smtp.socketFactory.fallback", "false");
+            props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 
-        InternetAddress destinatario = new InternetAddress((String)request.getParameter("para"));
-        InternetAddress remetente = new InternetAddress("yourgallery@gmail.com");
+            Session session = Session.getDefaultInstance(props);//recebe props
 
-        Message msg = new MimeMessage(session);
-        msg.setSentDate(new Date());//novo
-        msg.setFrom(remetente);
-        msg.setRecipient(Message.RecipientType.TO, destinatario);
-        msg.setSubject("Recuperar Password");
-        msg.setContent(mensagem.toString(), "text/HTML");
+            InternetAddress destinatario = new InternetAddress((String) request.getParameter("para"));
+            InternetAddress remetente = new InternetAddress("yourgallery@gmail.com");
 
-        Transport transport = session.getTransport("smtp");
-        transport.connect("smtp.gmail.com", "your.gallery.lei@gmail.com", "qwerty54321");
-        msg.saveChanges();
-        transport.sendMessage(msg, msg.getAllRecipients());
-        transport.close();
-        response.sendRedirect("/yGallery/index.jsp");
-        
-    }
-          else{
+            Message msg = new MimeMessage(session);
+            msg.setSentDate(new Date());//novo
+            msg.setFrom(remetente);
+            msg.setRecipient(Message.RecipientType.TO, destinatario);
+            msg.setSubject("Recuperar Password");
+            msg.setContent(mensagem.toString(), "text/HTML");
+
+            Transport transport = session.getTransport("smtp");
+            transport.connect("smtp.gmail.com", "your.gallery.lei@gmail.com", "qwerty54321");
+            msg.saveChanges();
+            transport.sendMessage(msg, msg.getAllRecipients());
+            transport.close();
+            response.sendRedirect("/yGallery/index.jsp");
+
+        } else {
             session1.setAttribute("erro", "O endereço não está registado");
             response.sendRedirect("/yGallery/erro.jsp");
-          }
+        }
     }
-
 }
