@@ -107,12 +107,12 @@ public class Utilidades {
     }
 
     public static boolean eValida(final String data) {
-        System.out.println(data.length()+"<----------");
+        System.out.println(data.length() + "<----------");
         Calendar calendar = Calendar.getInstance();
         int ano = Integer.parseInt(data.substring(0, 4));
         int mes = Integer.parseInt(data.substring(5, 7));
         int dia = Integer.parseInt(data.substring(8, 10));
-    
+
 
 
         int ano_actual = calendar.get(Calendar.YEAR);
@@ -139,37 +139,35 @@ public class Utilidades {
             return false;
         }
 
-       
-        if (!eMaiorDoQueDataNascimento(data_actual, data_nascimento)) 
-        {
+
+        if (!eMaiorDoQueDataNascimento(data_actual, data_nascimento)) {
             return false;
         }
 
 
-        if (mes <= 0 || mes > 12) 
-        {
+        if (mes <= 0 || mes > 12) {
             return false;
         }
 
-        if (ano == ano_actual) { 
-            if (mes - 1 == mes_actual) { 
-                if (dia > dia_actual) { 
+        if (ano == ano_actual) {
+            if (mes - 1 == mes_actual) {
+                if (dia > dia_actual) {
                     return false;
-                } else { 
+                } else {
 
                     return validaDiaDoMes(ano, mes, dia);
 
                 }
-            } else if (mes > mes_actual) { 
+            } else if (mes > mes_actual) {
                 return false;
 
-                
-            } else { 
+
+            } else {
 
                 return validaDiaDoMes(ano, mes, dia);
 
             }
-        } else { 
+        } else {
 
             return validaDiaDoMes(ano, mes, dia);
 
@@ -219,6 +217,28 @@ public class Utilidades {
 
         return true;
 
+    }
+
+    public static boolean naoData(String data) {
+
+         if(eUmNumero(""+data.charAt(0))&&eUmNumero(""+data.charAt(1))&&eUmNumero(""+data.charAt(2))&&eUmNumero(""+data.charAt(3))
+                 &&eUmNumero(""+data.charAt(5))&&eUmNumero(""+data.charAt(6))&& eUmNumero("" + data.charAt(8))&& eUmNumero("" + data.charAt(9))){
+        return false;
+         }
+
+        return true;
+    }
+
+    public static boolean eUmNumero(final String string) {
+
+
+        for (char character : string.toCharArray()) {
+            if (!Character.isDigit(character)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
 
