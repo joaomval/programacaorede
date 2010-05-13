@@ -139,38 +139,37 @@ public class Utilidades {
             return false;
         }
 
-        //VERIFICA SE A DATA DE ADMISSAO É MAIOR QUE A DATA DE NASCIMENTO
-        if (!eMaiorDoQueDataNascimento(data_actual, data_nascimento)) //Se a data de admissão for superior à de nascimento dá erro
+       
+        if (!eMaiorDoQueDataNascimento(data_actual, data_nascimento)) 
         {
             return false;
         }
 
 
-        if (mes <= 0 || mes > 12) // se o mês estiver incorrecto
+        if (mes <= 0 || mes > 12) 
         {
             return false;
         }
 
-        if (ano == ano_actual) { //se o ano for o actual
-            if (mes - 1 == mes_actual) { // se o mês for o actual
-                if (dia > dia_actual) { //se o dia for maior que o actual dá erro
+        if (ano == ano_actual) { 
+            if (mes - 1 == mes_actual) { 
+                if (dia > dia_actual) { 
                     return false;
-                } else { // confirma o dia
+                } else { 
 
                     return validaDiaDoMes(ano, mes, dia);
 
                 }
-            } else if (mes > mes_actual) { // caso seja um mês
+            } else if (mes > mes_actual) { 
                 return false;
 
-                /*}else  if (dia > dia_actual){ //se o dia for maior que o actual dá erro
-                return false;*/
-            } else { // confirma o dia
+                
+            } else { 
 
                 return validaDiaDoMes(ano, mes, dia);
 
             }
-        } else { //caso o ano seja inferior ao ano actual
+        } else { 
 
             return validaDiaDoMes(ano, mes, dia);
 
