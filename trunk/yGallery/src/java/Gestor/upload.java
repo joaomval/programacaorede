@@ -4,10 +4,10 @@
  */
 package Gestor;
 
-
 import Sistema.Artigo;
 import Sistema.TipoArtigo;
 import Sistema.Galeria;
+import Sistema.Url;
 import java.io.File;
 import java.io.IOException;
 import java.util.Hashtable;
@@ -53,31 +53,30 @@ public class upload extends HttpServlet {
         path = path.substring(0, path.lastIndexOf("\\build\\"));  //substring volta para projecto\
         path += "\\web\\upload\\"; //finalmente fica com projecto\web\pics
         Hashtable params = new Hashtable();
+        String nome_ficheiro = null;
         try {
-
-            
-
             for (FileItem item : items) {
                 if (item.isFormField()) {
                     String name = item.getFieldName();
-                   // System.out.println(name+"<-----------------");
+                    // System.out.println(name+"<-----------------");
                     String value = item.getString();
-                 //   System.out.println(value+"<-----------------");
+                    //   System.out.println(value+"<-----------------");
                     //fazer algo com isto
                     params.put(name, value);
 
                 } else {
-                    String Ficheiro = (path + (String) session.getAttribute("id") + System.currentTimeMillis() +".jpg");
-                    item.write(new File(Ficheiro));
 
+                    nome_ficheiro = ((String) session.getAttribute("id") + System.currentTimeMillis() + ".jpg");
+                    item.write(new File(path + nome_ficheiro));
                 }
-                System.out.println(params+"<-----------------");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
             trataHash(params, request);
+            trataHash2(params, nome_ficheiro);
+            
         } catch (Exception ex) {
             Logger.getLogger(upload.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -120,12 +119,23 @@ public class upload extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void trataHash(Hashtable params, HttpServletRequest request ) throws Exception {
+    private void trataHash(final Hashtable params, HttpServletRequest request) throws Exception {
         HttpSession session = request.getSession();
         params.put("var_idTipoArtigo", TipoArtigo.devolveId((String) params.get("tipo_item")));
         params.remove("tipo_item");
-        params.put("var_idGaleria",(String) Galeria.devolveIdGaleriaPorIdArtista(Sistema.Artista.devolveIdArtistaPorIdPessoa((String)session.getAttribute("id"))));
+        params.put("var_idGaleria", (String) Galeria.devolveIdGaleriaPorIdArtista(Sistema.Artista.devolveIdArtistaPorIdPessoa((String) session.getAttribute("id"))));
         Artigo.insere(params);
 
+    }
+
+    private void trataHash2(final Hashtable params, String nome_ficheiro) {
+        Hashtable params2 = new Hashtable();
+        params2.put("var_url", ("upload/" + nome_ficheiro));
+        try {
+            params2.put("var_idArtigo", (String) Artigo.devolveIdArtigoPorNome((String) params.get("var_nome")));
+        } catch (Exception ex) {
+            Logger.getLogger(upload.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Url.insere(params2);
     }
 }
