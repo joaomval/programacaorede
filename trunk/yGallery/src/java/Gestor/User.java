@@ -154,6 +154,7 @@ public class User extends HttpServlet {
         String password = request.getParameter("var_password");
         String repassword = request.getParameter("var_repassword");
         String email = request.getParameter("var_email");
+        String data = request.getParameter("var_datadenascimento");
         if (!password.equals(repassword)) {
             session.setAttribute("passwordDif", "diferente");
             response.sendRedirect("/yGallery/Registo.jsp");
@@ -162,6 +163,11 @@ public class User extends HttpServlet {
                 params.put("var_password", password);
                 if (!(Utilidades.eUmEmail(email))) {
                     session.setAttribute("NaoEmail", "NaoEmail");
+                    Utilidades.populaAtributosForm(request, response);
+                    response.sendRedirect("/yGallery/Registo.jsp");
+                }
+                else if(!(Utilidades.eValida(data))){
+                    session.setAttribute("NaoData", "NaoData");
                     Utilidades.populaAtributosForm(request, response);
                     response.sendRedirect("/yGallery/Registo.jsp");
                 }
