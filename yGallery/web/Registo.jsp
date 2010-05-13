@@ -61,7 +61,7 @@
                                 <td><input type="text" <%if (nascimento != null) {%>value="<%=nascimento%>" <%}%> name="var_datadenascimento" size="20"><% if (session.getAttribute("NaoData") != null) {%>
                                     <font color="#FF0000"> data não é válida</font>
                                     <% }%></td>
-                                  
+
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Morada</th>
