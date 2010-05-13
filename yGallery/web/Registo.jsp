@@ -47,6 +47,9 @@
                                     <% if (session.getAttribute("emailExiste") != null) {%>
                                     <font color="#FF0000"> email já em utilização</font>
                                     <% }%>
+                                     <% if (session.getAttribute("NaoEmail") != null) {%>
+                                    <font color="#FF0000"> email não é válido</font>
+                                    <% }%>
                                 </td>
                             </tr>
                             <tr>
