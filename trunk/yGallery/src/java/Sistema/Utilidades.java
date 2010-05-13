@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.util.Hashtable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -92,4 +94,16 @@ public class Utilidades {
             session.setAttribute("codPostal", request.getParameter("var_codigopostal"));
         }
     }
+
+    public static boolean eUmEmail(final String string) {
+		String email_regex = "^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,3})$";
+		Pattern pattern = Pattern.compile(email_regex);
+
+		Matcher matcher = pattern.matcher(string);
+
+		return matcher.matches();
+	}
+
+    
+
 }
