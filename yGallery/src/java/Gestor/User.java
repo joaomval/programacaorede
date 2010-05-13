@@ -166,7 +166,7 @@ public class User extends HttpServlet {
                     Utilidades.populaAtributosForm(request, response);
                     response.sendRedirect("/yGallery/Registo.jsp");
                 }
-                else if(!(Utilidades.eValida(data))){
+                else if( Utilidades.naoData(data)||!(Utilidades.eValida(data))){
                     session.setAttribute("NaoData", "NaoData");
                     Utilidades.populaAtributosForm(request, response);
                     response.sendRedirect("/yGallery/Registo.jsp");
