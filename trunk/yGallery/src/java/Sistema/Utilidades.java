@@ -13,10 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Joao
- */
+
 public class Utilidades {
 
     public static void populaAtributosSessionOutro(HttpServletRequest request, HttpServletResponse response, String ID) {
