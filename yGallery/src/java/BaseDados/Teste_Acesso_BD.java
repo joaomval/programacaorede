@@ -97,17 +97,23 @@ public class Teste_Acesso_BD {
 // instância de QueryResult guardará o resultado da query
         ResultSet rs = null;
         try {
-            if(params!=null){
-            String query = cache.compileQuery(qryName, params);
-             rs = stmt.executeQuery(query);
-            }else{
-                if(qryName.equals("devolve_todas_pessoas"))
+            if (params != null) {
+                String query = cache.compileQuery(qryName, params);
+                rs = stmt.executeQuery(query);
+            } else {
+                if (qryName.equals("devolve_todas_pessoas")) {
                     rs = stmt.executeQuery("Select * from Pessoa");
-                else{
-                    rs = stmt.executeQuery("Select * from tipo_artigo");
+                } else {
+                    if (qryName.equals("devolve_tipos_artigo")) {
+                        rs = stmt.executeQuery("Select * from tipo_artigo");
+                    } else {
+                        if (qryName.equals("devolve_artigos")) {
+                            rs = stmt.executeQuery("Select * from Artigo");
+                        }
+                    }
                 }
             }
-                
+
             //result = new QueryResult();
             //result.populateData(rs);
         } catch (Exception e) {
@@ -118,10 +124,11 @@ public class Teste_Acesso_BD {
 
     public void executaUpdate(String qryName, Hashtable params) throws SQLException, Exception {
 
-	String query = cache.compileQuery(qryName, params);
-	stmt.executeUpdate(query);
+        String query = cache.compileQuery(qryName, params);
+        stmt.executeUpdate(query);
 
     }
+
     /**
      * O método main testa a execução de uma query com parâmetros.
      */
@@ -137,13 +144,13 @@ public class Teste_Acesso_BD {
         try {
             qr = testeBD.executeSelect(qryName, params);
             //System.out.println(qr);
-           while(qr.next()){
+            while (qr.next()) {
                 String JNome = qr.getString("nome");
                 String JPassword = qr.getString("password");
                 System.out.println(JNome + " - " + JPassword);
-            
+
             }
-            
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
