@@ -8,10 +8,7 @@ package Sistema;
 import BaseDados.Teste_Acesso_BD;
 import java.util.Hashtable;
 
-/**
- *
- * @author Joao
- */
+
 public class Url {
         public static void insere(final Hashtable<String, Object> params) {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
