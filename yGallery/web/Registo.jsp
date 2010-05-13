@@ -54,7 +54,9 @@
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Nome</th>
-                                <td><input type="text" <%if (nome != null) {%>value="<%=nome%>" <%}%> name="var_nome" size="20"></td>
+                                <td><input type="text" <%if (nome != null) {%>value="<%=nome%>" <%}%> name="var_nome" size="20"><% if (session.getAttribute("NaoNome") != null) {%>
+                                    <font color="#FF0000"> nome não é válido</font>
+                                    <% }%></td>
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Data de Nascimento</th>
