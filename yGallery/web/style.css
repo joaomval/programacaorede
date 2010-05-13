@@ -226,3 +226,31 @@ footer styles
     padding: 1px 2px;
     background:url(imagens/formbg.gif) repeat-x left top;
 }
+#thumbnail {
+    width:120px;
+    height:120px;
+    border:0px solid;
+}
+#thumbnail img {
+    max-height:100%;
+    max-width:100%;
+}
+#principal {
+    margin:0 auto;
+}
+.conteinerfoto {
+    float:left;
+    margin: 10px;
+    padding:5px;
+}
+.conteinerfoto {
+    float:left;
+    width:125px;
+    height:133px;
+    margin: 10px;
+    padding:5px;
+    background-color:#f5f7f9;
+    border-right: #a5a7aa solid 1px;
+    border-bottom: #a5a7aa solid 1px;
+    text-align:center;
+}

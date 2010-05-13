@@ -59,6 +59,29 @@ public class Artigo {
         return idArtigo;
     }
 
+     public static String devolveNomeArtigoPorId(String ID) throws Exception {
+        Teste_Acesso_BD bd = new Teste_Acesso_BD();
+        bd.carregaDriverEAbreConnection();
+        bd.abreStatement();
+        Hashtable params = new Hashtable();
+        params.put("var_id", ID);
+        String qryName = new String("devolve_artigo_por_id");
+        ResultSet rs;
+        String nome = null;
+        try {
+            rs = bd.executeSelect(qryName, params);
+            while (rs.next()) {
+                nome = rs.getString("nome");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            bd.fechaStatement();
+            bd.fechaConnection();
+        }
+        return nome;
+    }
+
     public static void insere(final Hashtable<String, Object> params) {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();

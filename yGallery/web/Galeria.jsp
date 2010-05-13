@@ -29,26 +29,28 @@
                 </ul>
             </div>
             <div id="contents">
-                <div class="blogentry">
-                    <h3>
+                <h3>
 				Galeria:
-                    </h3>
-                    <%@page import="Sistema.Artigo"%>
-                    <%@page import="java.util.List"%>
-                    <%List<String> vector = Artigo.devolveArtigos();%>
-                    <TABLE border="1px">
-                        <% for (int row = 0; row < vector.size(); row++) {%>
-                        <TR>
-                            <TD align="middle">
-                                <img alt="" src="imagens/">
-                            </TD>
-                        </TR>
-                        <% }%>
-                    </TABLE>
+                </h3>
+                <%@page import="Sistema.Artigo"%>
+                <%@page import="java.util.List"%>
+                <%@page import="java.util.ArrayList"%>
+                <%@page import="Sistema.Url"%>
+                <%List<String> vector = Artigo.devolveArtigos();
+                            List<String> lista2 = new ArrayList<String>();
+                            session.setAttribute("erro", "Compra de artigos não implementada");%>
+                <div id="principal">
+                    <% for (int row = 0; row < vector.size(); row++) {%>
+                    <%List<String> lista = Url.devolveURLsArtigo(vector.get(row));
+                         lista2.add(Artigo.devolveNomeArtigoPorId(vector.get(row)));
+                         for (String s : lista) {%>
+                    <div class="conteinerfoto"><div id="thumbnail"><a href="/yGallery/erro.jsp"><img src="<%=s%>" border="0" alt=""/></a></div><span><%=lista2.get(row)%></span></div>
+                                <%}%>
+                                <%}%>
                 </div>
             </div>
             <div id="footer">
-		Copyright © YourGallery 2010
+                Copyright © YourGallery 2010
             </div>
         </div>
     </body>
