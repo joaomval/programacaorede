@@ -36,6 +36,27 @@ public class Galeria {
         }
         return galeria;
     }
+     public static String devolveIdGaleriaPorIdArtista(String idArtista) throws Exception {
+        Teste_Acesso_BD bd = new Teste_Acesso_BD();
+        bd.carregaDriverEAbreConnection();
+        bd.abreStatement();
+        Hashtable params = new Hashtable();
+        params.put("var_idArtista", idArtista);
+        String qryName = new String("devolve_Galeria_por_idArtista");
+        ResultSet rs;
+        try {
+            rs = bd.executeSelect(qryName, params);
+            while (rs.next()) {
+                idArtista = rs.getString("idGaleria");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            bd.fechaStatement();
+            bd.fechaConnection();
+        }
+        return idArtista;
+    }
 
     public static void insere(final Hashtable<String, Object> params) {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();

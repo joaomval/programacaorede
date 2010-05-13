@@ -29,7 +29,8 @@ public class SQLCache {
     /**
      * Nome do ficheiro de propriedades
      */
-    private static final String SQL_FILE = "C:/Users/RDFC/Documents/NetBeansProjects/yGallery/sql.properties";
+    private static final String SQL_FILE = "C:\\Users\\Joao\\Documents\\NetBeansProjects\\yGallery\\sql.properties";
+    
 // várias hipóteses de acesso ao ficheiro sql.properties:
 // quando se usa uma classe normal:
 //private static final String SQL_FILE = "..\\..\\..\\..\\sql.properties";

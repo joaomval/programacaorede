@@ -37,7 +37,7 @@ public class Artigo {
         return artigo;
     }
 
-    public void insere(final Hashtable<String, Object> params) {
+    public static void insere(final Hashtable<String, Object> params) {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();
