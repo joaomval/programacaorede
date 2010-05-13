@@ -39,7 +39,7 @@
                     <li><a href="/yGallery/index.jsp">Inicio</a></li>
                     <li><a href="/yGallery/Galeria.jsp">Galeria</a></li>
                     <li><a href="#">Agenda</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="/yGallery/Contacto.jsp">Contacto</a></li>
                     <% if (session.getAttribute("pessoa") == null) {%>
                     <li><a href="/yGallery/Registo.jsp">Registar</a></li>
                     <% } else {%>
