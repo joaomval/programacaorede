@@ -1,4 +1,3 @@
-
 package Gestor;
 
 import BaseDados.Teste_Acesso_BD;
@@ -24,7 +23,6 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
 
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class User extends HttpServlet {
@@ -155,17 +153,23 @@ public class User extends HttpServlet {
         params.put("var_codigopostal", request.getParameter("var_codigopostal"));
         String password = request.getParameter("var_password");
         String repassword = request.getParameter("var_repassword");
+        String email = request.getParameter("var_email");
         if (!password.equals(repassword)) {
             session.setAttribute("passwordDif", "diferente");
             response.sendRedirect("/yGallery/Registo.jsp");
         } else {
             if (verificaSeMailEstaLivre(request, response)) {
                 params.put("var_password", password);
-
+                if (!(Utilidades.eUmEmail(email))) {
+                    session.setAttribute("NaoEmail", "NaoEmail");
+                    Utilidades.populaAtributosForm(request, response);
+                    response.sendRedirect("/yGallery/Registo.jsp");
+                }
+                else{
                 Pessoa.insere(params);
                 String nome = request.getParameter("var_nome");
                 session.setAttribute("pessoa", nome);
-                response.sendRedirect("/yGallery/index.jsp");
+                response.sendRedirect("/yGallery/index.jsp");}
 
             } else {
                 session.setAttribute("emailExiste", "emailExiste");
@@ -174,6 +178,8 @@ public class User extends HttpServlet {
             }
 
         }
+
+
     }
 
     private void apagaPessoa(HttpServletRequest request, HttpServletResponse response) throws IOException, Exception {
