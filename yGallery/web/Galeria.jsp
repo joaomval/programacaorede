@@ -35,26 +35,15 @@
                     </h3>
                     <%@page import="Sistema.Artigo"%>
                     <%@page import="java.util.List"%>
-                    <%List<String> vector = Artigo.devolveArtigos(); %>
+                    <%List<String> vector = Artigo.devolveArtigos();%>
                     <TABLE border="1px">
-
-                        <th align="middle">ID</th>
-                        <th align="middle">E-Mail</th>
-                        <th align="middle">Nome</th>
-                        <th align="middle">Editar</th>
-
                         <% for (int row = 0; row < vector.size(); row++) {%>
                         <TR>
-                            <%for (int col = 0; col < 4; col++) {%>
                             <TD align="middle">
-                                <%if (col == 3) {%> <a href="Admin?accao=<%=vector2.get(row)%>"><img src="imagens/editar.png"></a><%}%>
-                                    <%if (col == 1) {%> <%=vector.get(row)%><%}%>
-                                    <%if (col == 0) {%> <%=vector2.get(row)%><%}%>
-                                    <%if (col == 2) {%> <%=vector3.get(row)%><%}%>
-                                    <%}%>
+                                <img alt="" src="imagens/">
                             </TD>
-                            <% }%>
                         </TR>
+                        <% }%>
                     </TABLE>
                 </div>
             </div>

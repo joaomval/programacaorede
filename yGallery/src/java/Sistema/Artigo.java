@@ -25,7 +25,7 @@ public class Artigo {
         try {
             rs = bd.executeSelect(qryName, null);
             while (rs.next()) {
-                artigos.add(rs.getString("tipo"));
+                artigos.add(rs.getString("idArtigo"));
             }
         } catch (Exception ex) {
             Logger.getLogger(TipoArtigo.class.getName()).log(Level.SEVERE, null, ex);
