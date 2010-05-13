@@ -240,6 +240,19 @@ public class Utilidades {
 
         return true;
     }
+
+    public static boolean naoNome(String nome) {
+
+        for(int i=0;i!=nome.length();++i){
+
+            if(eUmNumero(""+nome.charAt(i))){
+                return true;
+            }
+
+        }
+        return false;
+
+    }
 }
 
     
