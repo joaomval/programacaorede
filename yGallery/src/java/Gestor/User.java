@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Gestor;
 
 import BaseDados.Teste_Acesso_BD;
@@ -28,10 +25,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-/**
- *
- * @author Joao
- */
+
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class User extends HttpServlet {
 
