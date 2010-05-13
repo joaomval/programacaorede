@@ -54,15 +54,22 @@
                                     <% if (session.getAttribute("emailExiste") != null) {%>
                                     <font color="#FF0000"> email já em utilização</font>
                                     <% }%>
+                                     <% if (session.getAttribute("NaoEmail") != null) {%>
+                                    <font color="#FF0000"> email não é válido</font>
+                                    <% }%>
                                 </td>
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Nome</th>
-                                <td><input type="text" <%if (nome != null) {%>value="<%=nome%>" <%}%> name="var_nome" size="20"></td>
+                                <td><input type="text" <%if (nome != null) {%>value="<%=nome%>" <%}%> name="var_nome" size="20"><% if (session.getAttribute("NaoNome") != null) {%>
+                                    <font color="#FF0000"> nome não é válido</font>
+                                    <% }%></td>
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Data de Nascimento</th>
-                                <td><input type="text" <%if (nascimento != null) {%>value="<%=nascimento%>" <%}%> name="var_datadenascimento" size="20"></td>
+                                <td><input type="text"  <%if (nascimento != null) {%>value="<%=nascimento%>" <%}%> name="var_datadenascimento" size="20"><% if (session.getAttribute("NaoData") != null) {%>
+                                    <font color="#FF0000"> data não é válida</font>
+                                    <% }%></td>
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Morada</th>
@@ -70,7 +77,9 @@
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Código Postal</th>
-                                <td><input type="text" <%if (postal != null) {%>value="<%=postal%>" <%}%> name="var_codigopostal" size="15"></td>
+                                <td><input type="text" <%if (postal != null) {%>value="<%=postal%>" <%}%> name="var_codigopostal" size="15"><% if (session.getAttribute("NaoPostal") != null) {%>
+                                    <font color="#FF0000">Código postal não é válido</font>
+                                    <% }%></td>
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Artista</th>
