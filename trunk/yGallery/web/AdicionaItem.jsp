@@ -1,10 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
+        <% if (session.getAttribute("id") == null) {%>
+        <%session.setAttribute("erro", "Deve fazer login primeiro");%>
+        <META HTTP-EQUIV="Refresh" CONTENT="0; URL=http:/yGallery/erro.jsp">
+        <% }%>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Your Gallery</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
-        <link href="../Users/Joao/Documents/NetBeansProjects/yGallery/web/style.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <%--        <%@page import="java.util.List"%>
@@ -36,10 +39,6 @@
         <div style="width: 335px">
             <fieldset style="border-color: #f2a36c;">
                 <legend><h3>Inserir Artigo:</h3></legend>
-                <% if (session.getAttribute("id") == null) {%>
-                <%session.setAttribute("erro", "Deve fazer login primeiro");%>
-                <META HTTP-EQUIV="Refresh" CONTENT="0; URL=http:/yGallery/erro.jsp">
-                <% }%>
                 <form name="form_insere" action="upload" method="post" ENCTYPE="multipart/form-data">
                     <style>
                         label { vertical-align: top; width: 75px }
