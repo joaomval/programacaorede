@@ -155,6 +155,7 @@ public class User extends HttpServlet {
         String repassword = request.getParameter("var_repassword");
         String email = request.getParameter("var_email");
         String data = request.getParameter("var_datadenascimento");
+        String nome1= request.getParameter("var_nome");
         if (!password.equals(repassword)) {
             session.setAttribute("passwordDif", "diferente");
             response.sendRedirect("/yGallery/Registo.jsp");
@@ -171,6 +172,13 @@ public class User extends HttpServlet {
                     Utilidades.populaAtributosForm(request, response);
                     response.sendRedirect("/yGallery/Registo.jsp");
                 }
+                
+                else if( Utilidades.naoNome(nome1)){
+                    session.setAttribute("NaoNome", "NaoNome");
+                    Utilidades.populaAtributosForm(request, response);
+                    response.sendRedirect("/yGallery/Registo.jsp");
+                }
+
                 else{
                 Pessoa.insere(params);
                 String nome = request.getParameter("var_nome");
