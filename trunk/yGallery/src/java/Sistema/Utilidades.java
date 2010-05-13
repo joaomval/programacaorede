@@ -253,6 +253,21 @@ public class Utilidades {
         return false;
 
     }
+
+    public static boolean naoPostal(String codPostal) {
+System.out.println(codPostal.length()+"<----------");
+        if(codPostal.length()!=4 ){
+            return true;
+        }
+        for(int i=0;i!=codPostal.length();++i){
+
+            if(!(eUmNumero(""+codPostal.charAt(i)))){
+                return true;
+            }
+
+        }
+        return false;
+    }
 }
 
     
