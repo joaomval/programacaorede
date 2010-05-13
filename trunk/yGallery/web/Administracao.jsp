@@ -39,7 +39,7 @@
                         <tr>
                             <th width="23%" align="right" valign="middle" scope="col"><a href="/yGallery/EditarUser.jsp" <img src="imagens/edit_user.png"></a>
                             </th>
-                            <td><a href="/yGallery/EditarUser.jsp"> editar Utilizador</a> </td>
+                            <td><a href="/yGallery/EditarUser.jsp">editar Utilizador</a> </td>
                         </tr>
                         <tr>
                             <th width="23%" align="right" valign="middle" scope="col"> <img src="imagens/edit_agenda.png">
