@@ -71,7 +71,9 @@
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Código Postal</th>
-                                <td><input type="text" <%if (postal != null) {%>value="<%=postal%>" <%}%> name="var_codigopostal" size="15"></td>
+                                <td><input type="text" <%if (postal != null) {%>value="<%=postal%>" <%}%> name="var_codigopostal" size="15"><% if (session.getAttribute("NaoPostal") != null) {%>
+                                    <font color="#FF0000">Código postal não é válido</font>
+                                    <% }%></td>
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Password</th>
