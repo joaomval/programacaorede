@@ -1,13 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package BaseDados;
 
-/**
- *
- * @author Joao
- */
+
 import java.util.*;
 import java.io.*;
 
