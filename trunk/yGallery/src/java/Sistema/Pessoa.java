@@ -72,7 +72,7 @@ public class Pessoa {
         String qryName = new String("devolve_todas_pessoas");
         ResultSet rs;
         try {
-            rs = bd.executeSelect(qryName, null);
+            rs = bd.executeSelect(qryName);
             while (rs.next()) {
                 vector.add(rs.getString("idPessoa"));
             }
@@ -93,7 +93,7 @@ public class Pessoa {
         String qryName = new String("devolve_todas_pessoas");
         ResultSet rs;
         try {
-            rs = bd.executeSelect(qryName, null);
+            rs = bd.executeSelect(qryName);
             while (rs.next()) {
                 vector.add(rs.getString("nome"));
             }
@@ -114,7 +114,7 @@ public class Pessoa {
         String qryName = new String("devolve_todas_pessoas");
         ResultSet rs;
         try {
-            rs = bd.executeSelect(qryName, null);
+            rs = bd.executeSelect(qryName);
             while (rs.next()) {
                 vector.add(rs.getString("eMail"));
             }

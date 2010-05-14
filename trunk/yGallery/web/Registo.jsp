@@ -60,8 +60,8 @@
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Data de Nascimento</th>
-                                <td><input type="text" <%if (nascimento != null) {%>value="<%=nascimento%>" <%}%> name="var_datadenascimento" size="20"><% if (session.getAttribute("NaoData") != null) {%>
-                                    <font color="#FF0000"> data não é válida</font>
+                                <td><input type="text" <%if (nascimento != null) {%>value="<%=nascimento%>" <%}%> name="var_datadenascimento" maxlength="10" size="10"><% if (session.getAttribute("NaoData") != null) {%>
+                                    <font color="#FF0000"> data não é válida. Formato:AAAA-MM-DD</font>
                                     <% }%></td>
 
                             </tr>
@@ -71,7 +71,7 @@
                             </tr>
                             <tr>
                                 <th align="right" valign="middle" scope="row">Código Postal</th>
-                                <td><input type="text" <%if (postal != null) {%>value="<%=postal%>" <%}%> name="var_codigopostal" size="15"><% if (session.getAttribute("NaoPostal") != null) {%>
+                                <td><input type="text" <%if (postal != null) {%>value="<%=postal%>" <%}%> name="var_codigopostal" maxlength="4" size="4"><% if (session.getAttribute("NaoPostal") != null) {%>
                                     <font color="#FF0000">Código postal não é válido</font>
                                     <% }%></td>
                             </tr>

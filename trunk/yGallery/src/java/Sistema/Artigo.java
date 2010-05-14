@@ -23,7 +23,7 @@ public class Artigo {
         String qryName = new String("devolve_artigos");
         ResultSet rs;
         try {
-            rs = bd.executeSelect(qryName, null);
+            rs = bd.executeSelect(qryName);
             while (rs.next()) {
                 artigos.add(rs.getString("idArtigo"));
             }

@@ -9,16 +9,16 @@
         <servlet-class>Gestor.Admin</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Artista</servlet-name>
-        <servlet-class>Gestor.Artista</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Upload</servlet-name>
         <servlet-class>Gestor.Upload</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>upload</servlet-name>
         <servlet-class>Gestor.upload</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Artista</servlet-name>
+        <servlet-class>Gestor.Artista</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>User</servlet-name>
@@ -29,16 +29,16 @@
         <url-pattern>/Admin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Artista</servlet-name>
-        <url-pattern>/Artista</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>Upload</servlet-name>
         <url-pattern>/Upload</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>upload</servlet-name>
         <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Artista</servlet-name>
+        <url-pattern>/Artista</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

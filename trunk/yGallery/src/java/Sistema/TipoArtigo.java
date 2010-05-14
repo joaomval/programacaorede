@@ -78,7 +78,7 @@ public class TipoArtigo {
         String qryName = new String("devolve_tipos_artigo");
         ResultSet rs;
         try {
-            rs=bd.executeSelect(qryName, null);
+            rs=bd.executeSelect(qryName);
             while(rs.next()){
                 artigos.add(rs.getString("tipo"));
             }
@@ -101,7 +101,7 @@ public class TipoArtigo {
         String qryName = new String("devolve_tipos_artigo");
         ResultSet rs;
         try {
-            rs=bd.executeSelect(qryName, null);
+            rs=bd.executeSelect(qryName);
             while(rs.next()){
                 id_artigo = rs.getString("idTipoArtigo");
             }
