@@ -220,11 +220,13 @@ public class Utilidades {
     }
 
     public static boolean naoData(String data) {
-
-         if(eUmNumero(""+data.charAt(0))&&eUmNumero(""+data.charAt(1))&&eUmNumero(""+data.charAt(2))&&eUmNumero(""+data.charAt(3))
-                 &&eUmNumero(""+data.charAt(5))&&eUmNumero(""+data.charAt(6))&& eUmNumero("" + data.charAt(8))&& eUmNumero("" + data.charAt(9))){
-        return false;
-         }
+        if(data.length()!=10){
+            return true;
+        }
+        if (eUmNumero("" + data.charAt(0)) && eUmNumero("" + data.charAt(1)) && eUmNumero("" + data.charAt(2)) && eUmNumero("" + data.charAt(3))
+                && eUmNumero("" + data.charAt(5)) && eUmNumero("" + data.charAt(6)) && eUmNumero("" + data.charAt(8)) && eUmNumero("" + data.charAt(9))) {
+            return false;
+        }
 
         return true;
     }
@@ -243,9 +245,9 @@ public class Utilidades {
 
     public static boolean naoNome(String nome) {
 
-        for(int i=0;i!=nome.length();++i){
+        for (int i = 0; i != nome.length(); ++i) {
 
-            if(eUmNumero(""+nome.charAt(i))){
+            if (eUmNumero("" + nome.charAt(i))) {
                 return true;
             }
 
@@ -255,13 +257,13 @@ public class Utilidades {
     }
 
     public static boolean naoPostal(String codPostal) {
-System.out.println(codPostal.length()+"<----------");
-        if(codPostal.length()!=4 ){
+        System.out.println(codPostal.length() + "<----------");
+        if (codPostal.length() != 4) {
             return true;
         }
-        for(int i=0;i!=codPostal.length();++i){
+        for (int i = 0; i != codPostal.length(); ++i) {
 
-            if(!(eUmNumero(""+codPostal.charAt(i)))){
+            if (!(eUmNumero("" + codPostal.charAt(i)))) {
                 return true;
             }
 

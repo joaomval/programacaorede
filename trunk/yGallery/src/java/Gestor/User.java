@@ -145,6 +145,13 @@ public class User extends HttpServlet {
 
     private void inserirPessoa(HttpServletRequest request, HttpServletResponse response) throws IOException, Exception {
         HttpSession session = request.getSession();
+        session.removeAttribute("NaoEmail");
+        session.removeAttribute("NaoData");
+        session.removeAttribute("NaoNome");
+        session.removeAttribute("NaoPostal");
+        session.removeAttribute("emailExiste");
+        session.removeAttribute("passwordDif");
+
         Hashtable params = new Hashtable();
         params.put("var_email", request.getParameter("var_email"));
         params.put("var_nome", request.getParameter("var_nome"));
@@ -155,10 +162,11 @@ public class User extends HttpServlet {
         String repassword = request.getParameter("var_repassword");
         String email = request.getParameter("var_email");
         String data = request.getParameter("var_datadenascimento");
-        String nome1= request.getParameter("var_nome");
-        String codPostal=request.getParameter("var_codigopostal");
+        String nome1 = request.getParameter("var_nome");
+        String codPostal = request.getParameter("var_codigopostal");
         if (!password.equals(repassword)) {
             session.setAttribute("passwordDif", "diferente");
+            Utilidades.populaAtributosForm(request, response);
             response.sendRedirect("/yGallery/Registo.jsp");
         } else {
             if (verificaSeMailEstaLivre(request, response)) {
@@ -167,30 +175,24 @@ public class User extends HttpServlet {
                     session.setAttribute("NaoEmail", "NaoEmail");
                     Utilidades.populaAtributosForm(request, response);
                     response.sendRedirect("/yGallery/Registo.jsp");
-                }
-                else if( Utilidades.naoData(data)||!(Utilidades.eValida(data))){
+                } else if (Utilidades.naoData(data) || !(Utilidades.eValida(data))) {
                     session.setAttribute("NaoData", "NaoData");
                     Utilidades.populaAtributosForm(request, response);
                     response.sendRedirect("/yGallery/Registo.jsp");
-                }
-                
-                else if(Utilidades.naoNome(nome1)){
+                } else if (Utilidades.naoNome(nome1)) {
                     session.setAttribute("NaoNome", "NaoNome");
                     Utilidades.populaAtributosForm(request, response);
                     response.sendRedirect("/yGallery/Registo.jsp");
-                }
-
-                else if( Utilidades.naoPostal(codPostal)){
+                } else if (Utilidades.naoPostal(codPostal)) {
                     session.setAttribute("NaoPostal", "NaoPostal");
                     Utilidades.populaAtributosForm(request, response);
                     response.sendRedirect("/yGallery/Registo.jsp");
+                } else {
+                    Pessoa.insere(params);
+                    String nome = request.getParameter("var_nome");
+                    session.setAttribute("pessoa", nome);
+                    response.sendRedirect("/yGallery/index.jsp");
                 }
-
-                else{
-                Pessoa.insere(params);
-                String nome = request.getParameter("var_nome");
-                session.setAttribute("pessoa", nome);
-                response.sendRedirect("/yGallery/index.jsp");}
 
             } else {
                 session.setAttribute("emailExiste", "emailExiste");
