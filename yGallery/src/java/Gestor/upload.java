@@ -32,7 +32,6 @@ public class upload extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         FileItemFactory factory = new DiskFileItemFactory();
         ServletFileUpload upload = new ServletFileUpload(factory);
@@ -42,20 +41,16 @@ public class upload extends HttpServlet {
         } catch (FileUploadException e) {
             e.printStackTrace();
         }
-//queremos projecto\web\pics
-        String path = this.getServletContext().getRealPath("/"); //isto vai parar ao projecto\build\src
-        path = path.substring(0, path.lastIndexOf("\\build\\"));  //substring volta para projecto\
-        path += "\\web\\upload\\"; //finalmente fica com projecto\web\pics
+        String path = this.getServletContext().getRealPath("/");
+        path = path.substring(0, path.lastIndexOf("\\build\\"));
+        path += "\\web\\upload\\";
         Hashtable params = new Hashtable();
         String nome_ficheiro = null;
         try {
             for (FileItem item : items) {
                 if (item.isFormField()) {
                     String name = item.getFieldName();
-                    // System.out.println(name+"<-----------------");
                     String value = item.getString();
-                    //   System.out.println(value+"<-----------------");
-                    //fazer algo com isto
                     params.put(name, value);
 
                 } else {
