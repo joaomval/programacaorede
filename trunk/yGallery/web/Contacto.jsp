@@ -31,8 +31,8 @@
             <div id="contents">
                 <fieldset style="border-color: #f2a36c;">
                     <legend><h3>Contactos: </h3></legend>
-                    <p>João Almeida - joaomval[at]gmail.com - 25558</p>
-                    <p>Ricardo Carmelo - rdfcarmelo[at]hotmail.com - 25565</p>
+                    <p>João Almeida - joaomval@gmail.com - 25558</p>
+                    <p>Ricardo Carmelo - rdfcarmelo@hotmail.com - 25565</p>
                 </fieldset>
             </div>
             <div id="footer">
