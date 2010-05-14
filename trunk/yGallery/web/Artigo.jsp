@@ -32,7 +32,42 @@
                 <h3>
 				Artigo:
                 </h3>
-                <%=session.getAttribute("artigo_detalhe")%>
+                <%@page import="Sistema.Artigo" %>
+                <img src="<%=session.getAttribute("url_artigo_detalhe")%>" alt=""/>
+                <table>
+                    <tr>
+                        <td>
+                            Nome:
+                        </td>
+                        <td>
+                            <%=session.getAttribute("artigo_detalhe")%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Descrição:
+                        </td>
+                        <td>
+                            <%=Artigo.devolveDadosArtigoPorId(Artigo.devolveIdArtigoPorNome((String) session.getAttribute("artigo_detalhe"))).get("descricao")%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Preço:
+                        </td>
+                        <td>
+                            <%=Artigo.devolveDadosArtigoPorId(Artigo.devolveIdArtigoPorNome((String) session.getAttribute("artigo_detalhe"))).get("preco")%>
+                        </td>
+                    </tr>
+                    <tr><p></p></tr>
+                    <tr>
+                        <td>
+                            <%session.setAttribute("erro", "Pagamento não implementado");%>
+                            <a href="/yGallery/erro.jsp">Comprar</a>
+                        </td>
+                    </tr>
+                </table>
+
 
             </div>
             <div id="footer">

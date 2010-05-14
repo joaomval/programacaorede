@@ -29,7 +29,9 @@ public class Artista extends HttpServlet {
     throws ServletException, IOException {
         HttpSession session = request.getSession();
         String accao = (String) request.getParameter("accao");
+        String sub_accao = (String) request.getParameter("sub_accao");
         session.setAttribute("artigo_detalhe", accao);
+        session.setAttribute("url_artigo_detalhe", sub_accao);
         response.sendRedirect("/yGallery/Artigo.jsp?");
     } 
 

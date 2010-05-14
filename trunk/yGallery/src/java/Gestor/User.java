@@ -189,9 +189,8 @@ public class User extends HttpServlet {
                     response.sendRedirect("/yGallery/Registo.jsp");
                 } else {
                     Pessoa.insere(params);
-                    String nome = request.getParameter("var_nome");
-                    session.setAttribute("pessoa", nome);
-                    response.sendRedirect("/yGallery/index.jsp");
+                    session.setAttribute("erro", "Registo efectuado com sucesso");
+                    response.sendRedirect("/yGallery/erro.jsp");
                 }
 
             } else {

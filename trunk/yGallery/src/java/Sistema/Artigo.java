@@ -36,6 +36,31 @@ public class Artigo {
         return artigos;
     }
 
+    public static Hashtable devolveDadosArtigoPorId(String ID) {
+        Teste_Acesso_BD bd = new Teste_Acesso_BD();
+        bd.carregaDriverEAbreConnection();
+        bd.abreStatement();
+        Hashtable params = new Hashtable();
+        Hashtable params2 = new Hashtable();
+        params.put("var_id", ID);
+        String qryName = new String("devolve_artigo_por_id");
+        ResultSet rs;
+        try {
+            rs = bd.executeSelect(qryName, params);
+            while (rs.next()) {
+                params2.put("nome", (String) rs.getString("nome"));
+                params2.put("descricao", (String) rs.getString("descricao"));
+                params2.put("preco", (String) rs.getString("preco"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            bd.fechaStatement();
+            bd.fechaConnection();
+        }
+        return params2;
+    }
+
     public static String devolveIdArtigoPorNome(String nome) throws Exception {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
@@ -59,7 +84,7 @@ public class Artigo {
         return idArtigo;
     }
 
-     public static String devolveNomeArtigoPorId(String ID) throws Exception {
+    public static String devolveNomeArtigoPorId(String ID) throws Exception {
         Teste_Acesso_BD bd = new Teste_Acesso_BD();
         bd.carregaDriverEAbreConnection();
         bd.abreStatement();

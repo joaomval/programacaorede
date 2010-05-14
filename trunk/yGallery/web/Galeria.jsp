@@ -44,7 +44,7 @@
                     <%List<String> lista = Url.devolveURLsArtigo(vector.get(row));
                          lista2.add(Artigo.devolveNomeArtigoPorId(vector.get(row)));
                          for (String s : lista) {%>
-                    <div class="conteinerfoto"><div id="thumbnail"><a href="/yGallery/Artista?accao=<%=lista2.get(row)%>"<img src="<%=s%>" border="0" alt=""/></a></div><span><%=lista2.get(row)%></span></div>
+                    <div class="conteinerfoto"><div id="thumbnail"><a href="/yGallery/Artista?accao=<%=lista2.get(row)%>&sub_accao=<%=s%>"<img src="<%=s%>" border="0" alt=""/></a></div><span><%=lista2.get(row)%></span></div>
                                 <%}%>
                                 <%}%>
                 </div>
