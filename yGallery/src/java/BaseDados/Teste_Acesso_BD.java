@@ -1,7 +1,4 @@
-
 package BaseDados;
-
-
 
 import java.sql.*;
 import java.util.*;
@@ -87,34 +84,31 @@ public class Teste_Acesso_BD {
      * Método que executa uma query com recurso às classes
      * auxiliares SQLCache e QueryResult.
      */
-    public ResultSet executeSelect(
-            String qryName, Hashtable params) throws Exception {
+    public ResultSet executeSelect(String qryName, Hashtable params) throws Exception {
 // instância de QueryResult guardará o resultado da query
         ResultSet rs = null;
         try {
-            if (params != null) {
-                String query = cache.compileQuery(qryName, params);
-                rs = stmt.executeQuery(query);
-            } else {
-                if (qryName.equals("devolve_todas_pessoas")) {
-                    rs = stmt.executeQuery("Select * from Pessoa");
-                } else {
-                    if (qryName.equals("devolve_tipos_artigo")) {
-                        rs = stmt.executeQuery("Select * from tipo_artigo");
-                    } else {
-                        if (qryName.equals("devolve_artigos")) {
-                            rs = stmt.executeQuery("Select * from Artigo");
-                        }
-                    }
-                }
-            }
-
+            String query = cache.compileQuery(qryName, params);
+            rs = stmt.executeQuery(query);
             //result = new QueryResult();
             //result.populateData(rs);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return rs;
+    }
+
+    public ResultSet executeSelect(String qryName) throws Exception {
+        ResultSet rs;
+        try {
+            String query = cache.getSQLStatement(qryName);
+
+            rs = stmt.executeQuery(query);
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void executaUpdate(String qryName, Hashtable params) throws SQLException, Exception {

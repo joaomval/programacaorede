@@ -228,7 +228,7 @@ public class User extends HttpServlet {
     private void alteraDados(HttpServletRequest request, HttpServletResponse response) throws IOException, Exception {
         HttpSession session = request.getSession();
         Hashtable params = new Hashtable();
-
+        session.removeAttribute("emailExiste");
         params.put("var_idPessoa", session.getAttribute("id"));
         params.put("var_email", request.getParameter("var_email"));
         params.put("var_nome", request.getParameter("var_nome"));
