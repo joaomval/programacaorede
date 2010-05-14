@@ -36,6 +36,9 @@
                     <div><label for="preco">Preço</label>
                         <input id="preco" type="text" name="var_preco" size="5"></div>
                     <input type="submit" value="Enviar">
+                    <%if(session.getAttribute("sucesso_artigo")!=null){%>
+                    <p style="color: green">Artigo adicionado com sucesso!</p>
+                        <%}%>
                 </form>
             </fieldset>
         </div>

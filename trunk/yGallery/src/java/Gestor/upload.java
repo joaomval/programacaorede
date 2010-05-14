@@ -69,6 +69,7 @@ public class upload extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(upload.class.getName()).log(Level.SEVERE, null, ex);
         }
+        session.setAttribute("sucesso_artigo", "Artigo enviado com sucesso!");
         response.sendRedirect("/yGallery/MinhaGaleria.jsp");
     }
 
