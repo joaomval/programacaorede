@@ -33,6 +33,13 @@
 				Artigo:
                 </h3>
                 <%@page import="Sistema.Artigo" %>
+                <style>
+                    img{
+                        max-width:500px;
+                        max-height:100%;
+                        max-width:100%;
+                    }
+                </style>
                 <img src="<%=session.getAttribute("url_artigo_detalhe")%>" alt=""/>
                 <table>
                     <tr>
@@ -56,7 +63,7 @@
                             Preço:
                         </td>
                         <td>
-                            <%=Artigo.devolveDadosArtigoPorId(Artigo.devolveIdArtigoPorNome((String) session.getAttribute("artigo_detalhe"))).get("preco")%>
+                            <%=Artigo.devolveDadosArtigoPorId(Artigo.devolveIdArtigoPorNome((String) session.getAttribute("artigo_detalhe"))).get("preco")%> &euro
                         </td>
                     </tr>
                     <tr><p></p></tr>

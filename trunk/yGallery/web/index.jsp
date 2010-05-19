@@ -78,17 +78,13 @@
                     <h3>
 				Noticias
                     </h3>
-                    <p>
-                        <img class="imagefloat" src="imagens/arte.jpg" alt="" width="149" height="93" border="1">
-
-                    <h2>Obra de Picasso estabelece recorde mundial em leilões de arte</h2>
-                    <p>NOVA YORK (Reuters) - A pintura "Nu, Folhas Verdes e Busto", de Pablo Picasso, foi leiloada por um valor impressionante de mais de 106 milhões de dólares pela Christie's na terça-feira, estabelecendo um recorde para uma obra de arte vendida em leilão.</p>
-
-                    <p>O vibrante retrato em tamanho grande da amada e frequente modelo de Picasso, Marie-Therese Walter, foi o destaque de uma coleção internacional compilada pelos falecidos patronos de arte de Los Angeles Frances e Sidney Brody.</p>
-
-                    <p>A estimativa era de que a pintura fosse vendida por mais de 80 milhões de dólares, mas muitos especialistas de arte previam nas últimas semanas que a obra ganharia confiança no mercado de artes, atualmente se recuperando, e quebraria o recorde anterior de 104,3 milhões de dólares estabelecido em fevereiro por "Walking Man I" (Homem que Caminha I), de Giacometti, estabelecido na Sotheby's de Londres.</p>
+                    <object class="imagefloat" width="240" height="192.5"><param name="movie" value="http://www.youtube.com/v/ab8s3B7CVjo&hl=pt_PT&fs=1&rel=0&color1=0xe1600f&color2=0xfebd01"/><param name="allowFullScreen" value="true"/><param name="allowscriptaccess" value="always"/><embed src="http://www.youtube.com/v/ab8s3B7CVjo&hl=pt_PT&fs=1&rel=0&color1=0x5d1719&color2=0xcd311b" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="240" height="192.5"></embed></object>
+                    <h2>Leilões de Arte Contemporânea em Londres</h2>
+                    <p>A Christie's e a Sotheby's realizaram os seus leilões de Arte Contemporânea em Londres, nos dias 30 de Junho e 1 de Julho, totalizando &euro 108.5 milhões de euros e &euro 119.5 milhões, respectivamente.</p>
+                    <p>Na Christie's, Naked Portrait with Reflection tornou-se no segundo quadro mais bem vendido em leilão de Lucian Freud por &euro 14.8 milhões; Three Studies for a Self-Portrait, um tríptico de Francis Bacon foi vendido por &euro 21.7 milhões e Balloon Flower (Magenta) estabeleceu um novo recorde em leilão para Jeff Koons, ao ser ser arrematado por &euro 16.2 milhões.</p>
+                    <p>Na noite seguinte, o principal destaque da Sotheby's foi Study for Head of George Dyer também de Francis Bacon, vendido por &euro 17.3 milhões. Overseas Nurse de Richard Prince foi arrematado por 5.3 milhões de euros e estabeleceu um novo recorde para o artista em leilão e o quadro Sem Título (Pecho/Oreja) de Jean Michel Basquiat, que pertencia aos U2 subiu até aos 6.4 milhões de euros e foi a segunda peça mais bem vendida da noite.</p>
                     <ul>
-                        <li><a href="http://br.noticias.yahoo.com/s/reuters/100505/entretenimento/cultura_arte_picasso_leilao_recorde" target="_blank" >mais...</a></li>
+                        <li><a href="http://aeiou.expresso.pt/leiloes-de-arte-contemporanea-em-londres=f359456" target="_blank" >mais...</a></li>
                     </ul>
                 </div>
             </div>
